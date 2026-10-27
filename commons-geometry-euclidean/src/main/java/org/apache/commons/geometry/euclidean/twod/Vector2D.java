@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -78,7 +78,7 @@ public class Vector2D extends MultiDimensionalEuclideanVector<Vector2D> {
      * @param x abscissa (first coordinate)
      * @param y ordinate (second coordinate)
      */
-    private Vector2D(final double x, final double y) {
+    Vector2D(final double x, final double y) {
         this.x = x;
         this.y = y;
     }
@@ -348,7 +348,10 @@ public class Vector2D extends MultiDimensionalEuclideanVector<Vector2D> {
         if (isNaN()) {
             return 542;
         }
-        return 122 * (76 * Double.hashCode(x) + Double.hashCode(y));
+        int result = 1;
+        result = 31 * result + Double.hashCode(x);
+        result = 31 * result + Double.hashCode(y);
+        return result;
     }
 
     /**
@@ -366,7 +369,7 @@ public class Vector2D extends MultiDimensionalEuclideanVector<Vector2D> {
      *
      * @param other Object to test for equality to this
      * @return true if two Vector2D objects are equal, false if
-     *         object is null, not an instance of Vector2D, or
+     *         object is {@code null}, not an instance of Vector2D, or
      *         not equal to this Vector2D instance
      *
      */
@@ -501,7 +504,7 @@ public class Vector2D extends MultiDimensionalEuclideanVector<Vector2D> {
             y = Math.max(y, vec.getY());
         }
 
-        return Vector2D.of(x, y);
+        return of(x, y);
     }
 
     /** Return a vector containing the minimum component values from all input vectors.
@@ -544,7 +547,7 @@ public class Vector2D extends MultiDimensionalEuclideanVector<Vector2D> {
             y = Math.min(y, vec.getY());
         }
 
-        return Vector2D.of(x, y);
+        return of(x, y);
     }
 
     /** Compute the centroid of the given points. The centroid is the arithmetic mean position of a set
@@ -698,7 +701,7 @@ public class Vector2D extends MultiDimensionalEuclideanVector<Vector2D> {
          * @param x x coordinate
          * @param y y coordinate
          * @param throwOnFailure if true, an exception will be thrown if a normalized vector cannot be created
-         * @return normalized vector or null if one cannot be created and {@code throwOnFailure}
+         * @return normalized vector or {@code null} if one cannot be created and {@code throwOnFailure}
          *      is false
          * @throws IllegalArgumentException if the computed norm is zero, NaN, or infinite
          */
@@ -790,7 +793,7 @@ public class Vector2D extends MultiDimensionalEuclideanVector<Vector2D> {
          * @return new instance set to zero
          */
         public static Sum create() {
-            return new Sum(Vector2D.ZERO);
+            return new Sum(ZERO);
         }
 
         /** Construct a new instance with an initial value set to the argument.

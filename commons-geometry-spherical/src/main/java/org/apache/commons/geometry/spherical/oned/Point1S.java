@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -40,13 +40,13 @@ import org.apache.commons.numbers.core.Precision;
 public final class Point1S implements Point<Point1S> {
 
     /** A point with coordinates set to {@code 0*pi}. */
-    public static final Point1S ZERO = Point1S.of(0.0);
+    public static final Point1S ZERO = of(0.0);
 
     /** A point with coordinates set to {@code pi}. */
-    public static final Point1S PI = Point1S.of(Math.PI);
+    public static final Point1S PI = of(Math.PI);
 
     /** A point with all coordinates set to NaN. */
-    public static final Point1S NaN = Point1S.of(Double.NaN);
+    public static final Point1S NaN = of(Double.NaN);
 
     /** Comparator that sorts points by normalized azimuth in ascending order.
      * Points are only considered equal if their normalized azimuths match exactly.
@@ -194,7 +194,7 @@ public final class Point1S implements Point<Point1S> {
             az -= Angle.TWO_PI;
         }
 
-        return Point1S.of(az);
+        return of(az);
     }
 
     /** Return true if this instance is equivalent to the argument. The points are
@@ -229,7 +229,7 @@ public final class Point1S implements Point<Point1S> {
     /**
      * Get a hashCode for the point. Points normally must have exactly the
      * same azimuth angles in order to have the same hash code. Points
-     * will angles that differ by multiples of {@code 2pi} will not
+     * with angles that differ by multiples of {@code 2pi} will not
      * necessarily have the same hash code.
      *
      * <p>All NaN values have the same hash code.</p>
@@ -259,7 +259,7 @@ public final class Point1S implements Point<Point1S> {
      *
      * @param other Object to test for equality to this
      * @return true if two points on the 1-sphere objects are exactly equal, false if
-     *         object is null, not an instance of Point1S, or
+     *         object is {@code null}, not an instance of Point1S, or
      *         not equal to this Point1S instance
      *
      */

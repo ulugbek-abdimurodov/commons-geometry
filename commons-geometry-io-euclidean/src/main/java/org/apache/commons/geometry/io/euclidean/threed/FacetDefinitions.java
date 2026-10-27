@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -36,7 +36,7 @@ public final class FacetDefinitions {
      * polygon point in a similar (but not necessarily equal) direction, reversing the
      * order of vertices if needed.
      * @param vertices facet vertices
-     * @param normal facet normal; may be null
+     * @param normal facet normal; may be {@code null}
      * @param precision precision context used for floating point comparisons
      * @return convex polygon constructed from the vertices and normal
      * @throws IllegalArgumentException if a valid convex polygon cannot be constructed
@@ -59,7 +59,7 @@ public final class FacetDefinitions {
      * @param facet facet to convert to a polygon instance
      * @param precision precision context used for floating point comparisons
      * @return convex polygon constructed from the facet
-     * @throws NullPointerException if either argument is null
+     * @throws NullPointerException if either argument is {@code null}
      * @throws IllegalArgumentException if a valid convex polygon cannot be constructed
      */
     public static ConvexPolygon3D toPolygon(final FacetDefinition facet, final Precision.DoubleEquivalence precision) {

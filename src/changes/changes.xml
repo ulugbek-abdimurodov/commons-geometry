@@ -45,9 +45,9 @@ with a new-line in the release notes. (These spaces are ignored when displaying 
 If the output is not quite correct, check for invisible trailing spaces!
 -->
 
-<document xmlns="http://maven.apache.org/changes/1.0.0"
+<document xmlns="http://maven.apache.org/changes/2.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+          xsi:schemaLocation="http://maven.apache.org/changes/2.0.0 https://maven.apache.org/xsd/changes-2.0.0.xsd">
   <properties>
     <title>Apache Commons Geometry Release Notes</title>
   </properties>
@@ -63,6 +63,14 @@ Apache Commons Geometry 1.0 contains the following library modules:
   commons-geometry-io-core (requires Java 8+)
   commons-geometry-io-euclidean (requires Java 8+)
 ">
+      <action dev="pkarwasz" type="fix" due-to="Piotr P. Karwasz, Gary Gregory">
+          Create XML documents and transformers in the tutorial SVG writer through
+          org.apache.commons:commons-secure-xml, so they run with XML secure processing enabled.
+      </action>
+      <action dev="aherbert" type="update" due-to="Ivan Shuba">
+          Fix hash code collision for Vector2D and Vector3D. Modifies the
+          hashCode() method to reduce collision for non-identical instances of vectors.
+      </action>
       <action dev="mattjuntunen" type="add" issue="GEOMETRY-147">
           Add line intersection methods to Bounds2D and Bounds3D.
       </action>
@@ -76,9 +84,8 @@ Apache Commons Geometry 1.0 contains the following library modules:
       <action dev="mattjuntunen" type="fix" issue="GEOMETRY-143" due-to="Ron Goldman">
           Fix misclassification of points near zero in AngularInterval.
       </action>
-      <!-- UPDATE -->
-      <action dev="ggregory" type="fix" due-to="Dependabot, Gary Gregory">
-          Bump commons-parent from 55 to 58 #202.
+      <action dev="ggregory" type="fix">
+          Bump org.apache.commons:commons-parent from 84 to 96 #256.
       </action>
     </release>
 

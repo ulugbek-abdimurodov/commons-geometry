@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -48,6 +48,11 @@ public class StlBoundaryWriteHandler3D extends AbstractBoundaryWriteHandler3D {
 
     /** Initial size of data buffers used during write operations. */
     private int initialBufferSize = DEFAULT_BUFFER_SIZE;
+
+    /** Create an instance. */
+    public StlBoundaryWriteHandler3D() {
+        // Do nothing
+    }
 
     /** {@inheritDoc} */
     @Override
@@ -175,7 +180,7 @@ public class StlBoundaryWriteHandler3D extends AbstractBoundaryWriteHandler3D {
         try (OutputStream os = out.getOutputStream()) {
             BinaryStlWriter.writeHeader(null, count, os);
             triangleBuffer.writeTo(os);
-        } catch (IOException exc) {
+        } catch (final IOException exc) {
             throw GeometryIOUtils.createUnchecked(exc);
         }
     }

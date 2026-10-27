@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -236,10 +236,9 @@ public final class EmbeddedTreeLineSubset extends LineSubset {
     public String toString() {
         final Line line = getLine();
 
-        final StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder(128);
         sb.append(this.getClass().getSimpleName())
-            .append('[')
-            .append("lineOrigin= ")
+            .append("[lineOrigin= ")
             .append(line.getOrigin())
             .append(", lineDirection= ")
             .append(line.getDirection())

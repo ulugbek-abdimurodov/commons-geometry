@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -99,7 +99,7 @@ public final class GreatCircles {
     /** Construct an arc along the shortest path between the given points. The underlying
      * great circle is oriented in the direction from {@code start} to {@code end}.
      * @param start start point for the interval
-     * @param end end point point for the interval
+     * @param end end point for the interval
      * @param precision precision context used to compare floating point numbers
      * @return an arc representing the shortest path between the given points
      * @throws IllegalArgumentException if either of the given points is NaN or infinite, or if the given
@@ -108,7 +108,7 @@ public final class GreatCircles {
      */
     public static GreatArc arcFromPoints(final Point2S start, final Point2S end,
             final Precision.DoubleEquivalence precision) {
-        final GreatCircle circle = GreatCircles.fromPoints(start, end, precision);
+        final GreatCircle circle = fromPoints(start, end, precision);
 
         final Point1S subspaceStart = circle.toSubspace(start);
         final Point1S subspaceEnd = circle.toSubspace(end);

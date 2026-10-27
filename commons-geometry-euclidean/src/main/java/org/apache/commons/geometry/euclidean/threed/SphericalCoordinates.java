@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,7 +23,7 @@ import org.apache.commons.geometry.euclidean.twod.PolarCoordinates;
 import org.apache.commons.numbers.angle.Angle;
 
 /** Class representing <a href="https://en.wikipedia.org/wiki/Spherical_coordinate_system">spherical coordinates</a>
- * in 3 dimensional Euclidean space.
+ * in 3-dimensional Euclidean space.
  *
  * <p>Spherical coordinates for a point are defined by three values:
  * <ol>
@@ -102,7 +102,7 @@ public final class SphericalCoordinates implements Spatial {
     }
 
     /** Return the azimuth angle in radians. This is the angle in the x-y plane measured counter-clockwise from
-     * the positive x axis. The angle is in the range {@code [0, 2pi)}.
+     * the positive x-axis. The angle is in the range {@code [0, 2pi)}.
      * @return the azimuth angle in radians
      */
     public double getAzimuth() {
@@ -178,7 +178,7 @@ public final class SphericalCoordinates implements Spatial {
      *
      * @param other Object to test for equality to this
      * @return true if two SphericalCoordinates objects are equal, false if
-     *         object is null, not an instance of SphericalCoordinates, or
+     *         object is {@code null}, not an instance of SphericalCoordinates, or
      *         not equal to this SphericalCoordinates instance
      *
      */

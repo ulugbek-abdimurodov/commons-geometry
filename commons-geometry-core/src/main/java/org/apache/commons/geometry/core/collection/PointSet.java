@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -37,10 +37,10 @@ import org.apache.commons.geometry.core.Point;
  */
 public interface PointSet<P extends Point<P>> extends Set<P> {
 
-    /** Get the element equivalent to {@code pt} or null if no
+    /** Get the element equivalent to {@code pt} or {@code null} if no
      * such an element exists.
      * @param pt point to find an equivalent for
-     * @return set entry equivalent to {@code pt} or null if
+     * @return set entry equivalent to {@code pt} or {@code null} if
      *      no such entry exists
      */
     P get(P pt);

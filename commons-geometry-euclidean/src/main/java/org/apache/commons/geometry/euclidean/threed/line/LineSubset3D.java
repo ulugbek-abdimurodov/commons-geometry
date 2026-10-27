@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -57,16 +57,16 @@ public abstract class LineSubset3D implements RegionEmbedding<Vector3D, Vector1D
         return line.toSubspace(pt);
     }
 
-    /** Get the centroid, or geometric center, of the line subset or null if
+    /** Get the centroid, or geometric center, of the line subset or {@code null} if
      * the subset is empty or infinite.
-     * @return the centroid of the line subset, or null if the subset is empty or
+     * @return the centroid of the line subset, or {@code null} if the subset is empty or
      *      infinite
      */
     public abstract Vector3D getCentroid();
 
-    /** Get the 3D bounding box of the line subset or null if the subset is
+    /** Get the 3D bounding box of the line subset or {@code null} if the subset is
      * empty or infinite.
-     * @return the 3D bounding box the line subset or null if the subset is
+     * @return the 3D bounding box the line subset or {@code null} if the subset is
      *      empty or infinite
      */
     public abstract Bounds3D getBounds();

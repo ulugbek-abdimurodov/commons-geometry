@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -337,7 +337,7 @@ public final class AffineTransformMatrix1D extends AbstractAffineTransformMatrix
         final double scale = tOne.subtract(tZero).getX();
         final double translate = tZero.getX();
 
-        final AffineTransformMatrix1D mat =  AffineTransformMatrix1D.of(scale, translate);
+        final AffineTransformMatrix1D mat = of(scale, translate);
 
         final double det = mat.determinant();
         if (!Vectors.isRealNonZero(det)) {

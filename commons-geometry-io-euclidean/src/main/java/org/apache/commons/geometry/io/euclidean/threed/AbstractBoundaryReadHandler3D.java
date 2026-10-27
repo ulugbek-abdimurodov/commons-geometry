@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -38,6 +38,11 @@ import org.apache.commons.numbers.core.Precision;
 /** Abstract base class for {@link BoundaryReadHandler3D} implementations.
  */
 public abstract class AbstractBoundaryReadHandler3D implements BoundaryReadHandler3D {
+
+    /** Create an instance. */
+    public AbstractBoundaryReadHandler3D() {
+        // Do nothing
+    }
 
     /** {@inheritDoc} */
     @Override
@@ -102,7 +107,7 @@ public abstract class AbstractBoundaryReadHandler3D implements BoundaryReadHandl
         private final FacetDefinitionReader reader;
 
         /** Number of facets read from the reader. */
-        private int loadCount = 0;
+        private int loadCount;
 
         /** Next facet to return from the instance; may be null. */
         private FacetDefinition next;

@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -40,8 +40,8 @@ public abstract class AbstractObjParser {
     }
 
     /** Get the current keyword, meaning the keyword most recently parsed via the {@link #nextKeyword()}
-     * method. Null is returned if parsing has not started or the end of the content has been reached.
-     * @return the current keyword or null if parsing has not started or the end
+     * method. {@code null} is returned if parsing has not started or the end of the content has been reached.
+     * @return the current keyword or {@code null} if parsing has not started or the end
      *      of the content has been reached
      */
     public String getCurrentKeyword() {
@@ -92,7 +92,7 @@ public abstract class AbstractObjParser {
 
     /** Read the remaining content on the current data line, taking line continuation characters into
      * account.
-     * @return remaining content on the current data line or null if the end of the content has
+     * @return remaining content on the current data line or {@code null} if the end of the content has
      *      been reached
      * @throws java.io.UncheckedIOException if an I/O error occurs
      */
@@ -117,7 +117,7 @@ public abstract class AbstractObjParser {
     }
 
     /** Read a whitespace-delimited 3D vector from the current data line.
-     * @return vector vector read from the current line
+     * @return vector read from the current line
      * @throws IllegalStateException if parsing fails
      * @throws java.io.UncheckedIOException if an I/O error occurs
      */

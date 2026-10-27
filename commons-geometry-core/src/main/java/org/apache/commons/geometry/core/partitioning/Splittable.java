@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -22,6 +22,7 @@ import org.apache.commons.geometry.core.Point;
  * @param <P> Point implementation type
  * @param <S> Split type
  */
+@FunctionalInterface
 public interface Splittable<P extends Point<P>, S extends Splittable<P, S>> {
 
     /** Split this instance with the given hyperplane.

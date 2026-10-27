@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -22,7 +22,7 @@ import java.util.Objects;
 
 /** Class used to buffer characters read from an underlying {@link Reader}.
  * Characters can be consumed from the buffer, examined without being consumed,
- * and pushed back onto the buffer. The internal bufer is resized as needed.
+ * and pushed back onto the buffer. The internal buffer is resized as needed.
  */
 public class CharReadBuffer {
 
@@ -55,21 +55,21 @@ public class CharReadBuffer {
 
     /** Construct a new instance that buffers characters from the given reader.
      * @param reader underlying reader instance
-     * @throws NullPointerException if {@code reader} is null
+     * @throws NullPointerException if {@code reader} is {@code null}
      */
     public CharReadBuffer(final Reader reader) {
-        this(reader, DEFAULT_INITIAL_CAPACITY);
+        this(checkReader(reader), DEFAULT_INITIAL_CAPACITY, DEFAULT_INITIAL_CAPACITY >>> 1, false);
     }
 
     /** Construct a new instance that buffers characters from the given reader.
      * @param reader underlying reader instance
      * @param initialCapacity the initial capacity of the internal buffer; the buffer
      *      is resized as needed
-     * @throws NullPointerException if {@code reader} is null
+     * @throws NullPointerException if {@code reader} is {@code null}
      * @throws IllegalArgumentException if {@code initialCapacity} is less than one.
      */
     public CharReadBuffer(final Reader reader, final int initialCapacity) {
-        this(reader, initialCapacity, (initialCapacity + 1) / 2);
+        this(checkReader(reader), checkInitialCapacity(initialCapacity), (initialCapacity + 1) >>> 1, false);
     }
 
     /** Construct a new instance that buffers characters from the given reader.
@@ -79,24 +79,68 @@ public class CharReadBuffer {
      * @param minRead the minimum number of characters to request from the reader
      *      when fetching more characters into the buffer; this can be used to limit the
      *      number of calls made to the reader
-     * @throws NullPointerException if {@code reader} is null
+     * @throws NullPointerException if {@code reader} is {@code null}
      * @throws IllegalArgumentException if {@code initialCapacity} or {@code minRead}
      *      are less than one.
      */
     public CharReadBuffer(final Reader reader, final int initialCapacity, final int minRead) {
-        Objects.requireNonNull(reader, "Reader cannot be null");
+        this(checkReader(reader),
+            checkInitialCapacity(initialCapacity),
+            checkMinRead(minRead), false);
+    }
+
+    /** Construct a new instance that buffers characters from the given reader.
+     * @param reader underlying reader instance
+     * @param initialCapacity the initial capacity of the internal buffer; the buffer
+     *      is resized as needed
+     * @param minRead the minimum number of characters to request from the reader
+     *      when fetching more characters into the buffer; this can be used to limit the
+     *      number of calls made to the reader
+     *      are less than one.
+     * @param ignored Ignored parameter.
+     */
+    private CharReadBuffer(final Reader reader, final int initialCapacity, final int minRead, boolean ignored) {
+        this.reader = reader;
+        this.buffer = new char[initialCapacity];
+        this.minRead = minRead;
+    }
+
+    /**
+     * Check the reader is not null.
+     *
+     * @param reader the reader
+     * @return the reader
+     */
+    private static Reader checkReader(final Reader reader) {
+        return Objects.requireNonNull(reader, "Reader cannot be null");
+    }
+
+    /**
+     * Check initial capacity is strictly positive.
+     *
+     * @param initialCapacity the initial capacity
+     * @return the initialCapacity
+     */
+    private static int checkInitialCapacity(final int initialCapacity) {
         if (initialCapacity < 1) {
             throw new IllegalArgumentException("Initial buffer capacity must be greater than 0; was " +
                     initialCapacity);
         }
+        return initialCapacity;
+    }
+
+    /**
+     * Check the minimum characters to read is strictly positive.
+     *
+     * @param minRead the minimum number of characters to request from the reader
+     * @return the minRead
+     */
+    private static int checkMinRead(final int minRead) {
         if (minRead < 1) {
             throw new IllegalArgumentException("Min read value must be greater than 0; was " +
                     minRead);
         }
-
-        this.reader = reader;
-        this.buffer = new char[initialCapacity];
-        this.minRead = minRead;
+        return minRead;
     }
 
     /** Return true if more characters are available from the read buffer.
@@ -139,7 +183,7 @@ public class CharReadBuffer {
      * the number of characters available in the buffer up to {@code len}. Null is
      * returned if no more characters are available.
      * @param len requested length of the string
-     * @return a string from the read buffer or null if no more characters are available
+     * @return a string from the read buffer or {@code null} if no more characters are available
      * @throws IllegalArgumentException if {@code len} is less than 0
      * @throws java.io.UncheckedIOException if an I/O error occurs
      * @see #peekString(int)
@@ -170,7 +214,7 @@ public class CharReadBuffer {
      * the number of characters available in the buffer up to {@code len}. Null is
      * returned if no more characters are available.
      * @param len requested length of the string
-     * @return a string from the read buffer or null if no more characters are available
+     * @return a string from the read buffer or {@code null} if no more characters are available
      * @throws IllegalArgumentException if {@code len} is less than 0
      * @throws java.io.UncheckedIOException if an I/O error occurs
      * @see #readString(int)

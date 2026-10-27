@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -35,7 +35,7 @@ import org.apache.commons.geometry.euclidean.threed.line.LineConvexSubset3D;
 import org.apache.commons.geometry.euclidean.threed.line.LinecastPoint3D;
 import org.apache.commons.numbers.core.Precision;
 
-/** Binary space partitioning (BSP) tree representing a region in three dimensional
+/** Binary space partitioning (BSP) tree representing a region in three-dimensional
  * Euclidean space.
  */
 public final class RegionBSPTree3D extends AbstractRegionBSPTree<Vector3D, RegionBSPTree3D.RegionNode3D>
@@ -60,7 +60,7 @@ public final class RegionBSPTree3D extends AbstractRegionBSPTree<Vector3D, Regio
      * @see #copy(org.apache.commons.geometry.core.partitioning.bsp.BSPTree)
      */
     public RegionBSPTree3D copy() {
-        final RegionBSPTree3D result = RegionBSPTree3D.empty();
+        final RegionBSPTree3D result = empty();
         result.copy(this);
 
         return result;
@@ -125,7 +125,7 @@ public final class RegionBSPTree3D extends AbstractRegionBSPTree<Vector3D, Regio
     /** {@inheritDoc} */
     @Override
     public Split<RegionBSPTree3D> split(final Hyperplane<Vector3D> splitter) {
-        return split(splitter, RegionBSPTree3D.empty(), RegionBSPTree3D.empty());
+        return split(splitter, empty(), empty());
     }
 
     /** {@inheritDoc} */
@@ -232,7 +232,7 @@ public final class RegionBSPTree3D extends AbstractRegionBSPTree<Vector3D, Regio
         return new PartitionedRegionBuilder3D();
     }
 
-    /** BSP tree node for three dimensional Euclidean space.
+    /** BSP tree node for three-dimensional Euclidean space.
      */
     public static final class RegionNode3D extends AbstractRegionBSPTree.AbstractRegionNode<Vector3D, RegionNode3D> {
         /** Simple constructor.
@@ -310,7 +310,7 @@ public final class RegionBSPTree3D extends AbstractRegionBSPTree<Vector3D, Regio
         /** Construct a new builder instance.
          */
         private PartitionedRegionBuilder3D() {
-            super(RegionBSPTree3D.empty());
+            super(empty());
         }
 
         /** Insert a partition plane.
@@ -442,7 +442,7 @@ public final class RegionBSPTree3D extends AbstractRegionBSPTree<Vector3D, Regio
         /** Simple constructor.
          * @param point the point to project onto the region's boundary
          */
-        private BoundaryProjector3D(final Vector3D point) {
+        BoundaryProjector3D(final Vector3D point) {
             super(point);
         }
 
@@ -632,7 +632,7 @@ public final class RegionBSPTree3D extends AbstractRegionBSPTree<Vector3D, Regio
                 if (pt != null) {
                     if (firstOnly && !results.isEmpty() &&
                             line.getPrecision().compare(minAbscissa, line.abscissa(pt)) < 0) {
-                        // we have results and we are now sure that no other intersection points will be
+                        // we have results, and we are now sure that no other intersection points will be
                         // found that are closer or at the same position on the intersecting line.
                         return Result.TERMINATE;
                     } else if (linecastSubset.contains(pt)) {
@@ -652,11 +652,11 @@ public final class RegionBSPTree3D extends AbstractRegionBSPTree<Vector3D, Regio
             return Result.CONTINUE;
         }
 
-        /** Compute the linecast point for the given intersection point and tree node, returning null
+        /** Compute the linecast point for the given intersection point and tree node, returning {@code null}
          * if the point does not actually lie on the region boundary.
          * @param pt intersection point
          * @param node node containing the cut that the linecast line intersected with
-         * @return a new linecast point instance or null if the intersection point does not lie
+         * @return a new linecast point instance or {@code null} if the intersection point does not lie
          *      on the region boundary
          */
         private LinecastPoint3D computeLinecastPoint(final Vector3D pt, final RegionNode3D node) {

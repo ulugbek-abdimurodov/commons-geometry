@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -99,7 +99,7 @@ public class TextFacetDefinitionWriter extends AbstractTextFormatWriter {
     /** Number of vertices required per facet; will be -1 if disabled. */
     private int facetVertexCount = DEFAULT_FACET_VERTEX_COUNT;
 
-    /** Comment start token; may be null. */
+    /** Comment start token; may be {@code null}. */
     private String commentToken = DEFAULT_COMMENT_TOKEN;
 
     /** Construct a new instance that writes facet information to the given writer.
@@ -140,7 +140,7 @@ public class TextFacetDefinitionWriter extends AbstractTextFormatWriter {
 
     /** Get the number of vertices required per facet or {@code -1} if no specific
      * number is required. The default value is {@value #DEFAULT_FACET_VERTEX_COUNT}.
-     * @return the number of vertices required per facet or {@code -1} if any geometricallly
+     * @return the number of vertices required per facet or {@code -1} if any geometrically
      *      valid number is allowed (ie, any number greater than or equal to 3)
      */
     public int getFacetVertexCount() {
@@ -165,7 +165,7 @@ public class TextFacetDefinitionWriter extends AbstractTextFormatWriter {
 
     /** Get the string used to begin comment lines in the output.
      * The default value is {@value #DEFAULT_COMMENT_TOKEN}
-     * @return the string used to begin comment lines in the output; may be null
+     * @return the string used to begin comment lines in the output; may be {@code null}
      */
     public String getCommentToken() {
         return commentToken;
@@ -191,7 +191,7 @@ public class TextFacetDefinitionWriter extends AbstractTextFormatWriter {
 
     /** Write a comment to the output.
      * @param comment comment string to write
-     * @throws IllegalStateException if the configured {@link #getCommentToken() comment token} is null
+     * @throws IllegalStateException if the configured {@link #getCommentToken() comment token} is {@code null}
      * @throws java.io.UncheckedIOException if an I/O error occurs
      */
     public void writeComment(final String comment) {

@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -542,7 +542,7 @@ public abstract class PointSetTestBase<P extends Point<P>>
         Assertions.assertEquals(0, testPts.size(), "Expected iterator to visit all points");
 
         Assertions.assertFalse(it.hasNext());
-        Assertions.assertThrows(NoSuchElementException.class, () -> it.next());
+        Assertions.assertThrows(NoSuchElementException.class, it::next);
     }
 
     @Test
@@ -555,7 +555,7 @@ public abstract class PointSetTestBase<P extends Point<P>>
 
         // assert
         Assertions.assertFalse(it.hasNext());
-        Assertions.assertThrows(NoSuchElementException.class, () -> it.next());
+        Assertions.assertThrows(NoSuchElementException.class, it::next);
     }
 
     @Test
@@ -877,14 +877,14 @@ public abstract class PointSetTestBase<P extends Point<P>>
         final Iterator<P> it = set.nearToFar(pts.get(0)).iterator();
         Assertions.assertTrue(it.hasNext());
         Assertions.assertEquals(pts.get(0), it.next());
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> it.remove());
+        Assertions.assertThrows(UnsupportedOperationException.class, it::remove);
 
         Assertions.assertTrue(it.hasNext());
         Assertions.assertEquals(pts.get(1), it.next());
 
         Assertions.assertFalse(it.hasNext());
 
-        Assertions.assertThrows(NoSuchElementException.class, () -> it.next());
+        Assertions.assertThrows(NoSuchElementException.class, it::next);
     }
 
     @Test
@@ -900,7 +900,7 @@ public abstract class PointSetTestBase<P extends Point<P>>
         set.remove(pts.get(0));
 
         // assert
-        Assertions.assertThrows(ConcurrentModificationException.class, () -> it.next());
+        Assertions.assertThrows(ConcurrentModificationException.class, it::next);
     }
 
     @Test
@@ -987,14 +987,14 @@ public abstract class PointSetTestBase<P extends Point<P>>
         final Iterator<P> it = set.farToNear(pts.get(0)).iterator();
         Assertions.assertTrue(it.hasNext());
         Assertions.assertEquals(pts.get(1), it.next());
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> it.remove());
+        Assertions.assertThrows(UnsupportedOperationException.class, it::remove);
 
         Assertions.assertTrue(it.hasNext());
         Assertions.assertEquals(pts.get(0), it.next());
 
         Assertions.assertFalse(it.hasNext());
 
-        Assertions.assertThrows(NoSuchElementException.class, () -> it.next());
+        Assertions.assertThrows(NoSuchElementException.class, it::next);
     }
 
     @Test
@@ -1010,7 +1010,7 @@ public abstract class PointSetTestBase<P extends Point<P>>
         set.remove(pts.get(0));
 
         // assert
-        Assertions.assertThrows(ConcurrentModificationException.class, () -> it.next());
+        Assertions.assertThrows(ConcurrentModificationException.class, it::next);
     }
 
     @Test

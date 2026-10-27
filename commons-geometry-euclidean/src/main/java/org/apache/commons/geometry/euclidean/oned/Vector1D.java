@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -68,7 +68,7 @@ public class Vector1D extends EuclideanVector<Vector1D> {
     /** Simple constructor.
      * @param x abscissa (coordinate value)
      */
-    private Vector1D(final double x) {
+    Vector1D(final double x) {
         this.x = x;
     }
 
@@ -276,7 +276,7 @@ public class Vector1D extends EuclideanVector<Vector1D> {
      *
      * @param other Object to test for equality to this
      * @return true if two vector objects are equal, false if
-     *         object is null, not an instance of Vector1D, or
+     *         object is {@code null}, not an instance of Vector1D, or
      *         not equal to this Vector1D instance
      *
      */
@@ -399,11 +399,11 @@ public class Vector1D extends EuclideanVector<Vector1D> {
          * is returned.
          * @param x x coordinate
          * @param throwOnFailure if true, an exception will be thrown if a normalized vector cannot be created
-         * @return normalized vector or null if one cannot be created and {@code throwOnFailure}
+         * @return normalized vector or {@code null} if one cannot be created and {@code throwOnFailure}
          *      is false
          * @throws IllegalArgumentException if the computed norm is zero, NaN, or infinite
          */
-        private static Unit tryCreateNormalized(final double x, final boolean throwOnFailure) {
+        static Unit tryCreateNormalized(final double x, final boolean throwOnFailure) {
             final double norm = Vectors.norm(x);
 
             if (Vectors.isRealNonZero(norm)) {
@@ -457,7 +457,7 @@ public class Vector1D extends EuclideanVector<Vector1D> {
          * @return new instance set to zero
          */
         public static Sum create() {
-            return new Sum(Vector1D.ZERO);
+            return new Sum(ZERO);
         }
 
         /** Construct a new instance with an initial value set to the argument.

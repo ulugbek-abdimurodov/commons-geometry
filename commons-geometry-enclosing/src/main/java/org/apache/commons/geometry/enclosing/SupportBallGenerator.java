@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -28,6 +28,7 @@ import org.apache.commons.geometry.core.Point;
  * @param <P> Point type.
  * @see EnclosingBall
  */
+@FunctionalInterface
 public interface SupportBallGenerator<P extends Point<P>> {
 
     /** Create a ball whose boundary lies on prescribed support points.

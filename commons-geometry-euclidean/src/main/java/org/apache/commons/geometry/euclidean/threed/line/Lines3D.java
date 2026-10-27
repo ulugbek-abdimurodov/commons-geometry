@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -77,7 +77,7 @@ public final class Lines3D {
      */
     public static Ray3D rayFromPointAndDirection(final Vector3D startPoint, final Vector3D direction,
             final Precision.DoubleEquivalence precision) {
-        final Line3D line = Lines3D.fromPointAndDirection(startPoint, direction, precision);
+        final Line3D line = fromPointAndDirection(startPoint, direction, precision);
 
         return new Ray3D(line, startPoint);
     }
@@ -121,7 +121,7 @@ public final class Lines3D {
      */
     public static ReverseRay3D reverseRayFromPointAndDirection(final Vector3D endPoint, final Vector3D lineDirection,
             final Precision.DoubleEquivalence precision) {
-        final Line3D line = Lines3D.fromPointAndDirection(endPoint, lineDirection, precision);
+        final Line3D line = fromPointAndDirection(endPoint, lineDirection, precision);
 
         return new ReverseRay3D(line, endPoint);
     }
@@ -165,7 +165,7 @@ public final class Lines3D {
      */
     public static Segment3D segmentFromPoints(final Vector3D startPoint, final Vector3D endPoint,
             final Precision.DoubleEquivalence precision) {
-        final Line3D line = Lines3D.fromPoints(startPoint, endPoint, precision);
+        final Line3D line = fromPoints(startPoint, endPoint, precision);
 
         // we know that the points lie on the line and are in increasing abscissa order
         // since they were used to create the line
@@ -180,7 +180,7 @@ public final class Lines3D {
      * @param b second point
      * @return a new line segment representing the points between the projected locations of {@code a}
      *      and {@code b} on the given line
-     * @throws IllegalArgumentException if either point contains NaN or infinite coordinate values)
+     * @throws IllegalArgumentException if either point contains NaN or infinite coordinate values
      */
     public static Segment3D segmentFromPoints(final Line3D line, final Vector3D a, final Vector3D b) {
         return segmentFromLocations(line, line.abscissa(a), line.abscissa(b));

@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -86,7 +86,7 @@ public class Vector3D extends MultiDimensionalEuclideanVector<Vector3D> {
      * @param y y coordinate value
      * @param z z coordinate value
      */
-    private Vector3D(final double x, final double y, final double z) {
+    Vector3D(final double x, final double y, final double z) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -408,10 +408,14 @@ public class Vector3D extends MultiDimensionalEuclideanVector<Vector3D> {
         if (isNaN()) {
             return 642;
         }
-        return 643 * (164 * Double.hashCode(x) + 3 * Double.hashCode(y) + Double.hashCode(z));
+        int result = 1;
+        result = 31 * result + Double.hashCode(x);
+        result = 31 * result + Double.hashCode(y);
+        result = 31 * result + Double.hashCode(z);
+        return result;
     }
 
-    /**d
+    /**
      * Test for the equality of two vector instances.
      * <p>
      * If all coordinates of two vectors are exactly the same, and none are
@@ -426,7 +430,7 @@ public class Vector3D extends MultiDimensionalEuclideanVector<Vector3D> {
      *
      * @param other Object to test for equality to this
      * @return true if two Vector3D objects are equal, false if
-     *         object is null, not an instance of Vector3D, or
+     *         object is {@code null}, not an instance of Vector3D, or
      *         not equal to this Vector3D instance
      *
      */
@@ -567,7 +571,7 @@ public class Vector3D extends MultiDimensionalEuclideanVector<Vector3D> {
             z = Math.max(z, vec.getZ());
         }
 
-        return Vector3D.of(x, y, z);
+        return of(x, y, z);
     }
 
     /** Return a vector containing the minimum component values from all input vectors.
@@ -612,7 +616,7 @@ public class Vector3D extends MultiDimensionalEuclideanVector<Vector3D> {
             z = Math.min(z, vec.getZ());
         }
 
-        return Vector3D.of(x, y, z);
+        return of(x, y, z);
     }
 
     /** Compute the centroid of the given points. The centroid is the arithmetic mean position of a set
@@ -696,7 +700,7 @@ public class Vector3D extends MultiDimensionalEuclideanVector<Vector3D> {
          * @param y x coordinate value
          * @param z x coordinate value
          */
-        private Unit(final double x, final double y, final double z) {
+        Unit(final double x, final double y, final double z) {
             super(x, y, z);
         }
 
@@ -767,7 +771,7 @@ public class Vector3D extends MultiDimensionalEuclideanVector<Vector3D> {
          * @param y y coordinate
          * @param z z coordinate
          * @param throwOnFailure if true, an exception will be thrown if a normalized vector cannot be created
-         * @return normalized vector or null if one cannot be created and {@code throwOnFailure}
+         * @return normalized vector or {@code null} if one cannot be created and {@code throwOnFailure}
          *      is false
          * @throws IllegalArgumentException if the computed norm is zero, NaN, or infinite
          */
@@ -874,7 +878,7 @@ public class Vector3D extends MultiDimensionalEuclideanVector<Vector3D> {
          * @return new instance set to zero
          */
         public static Sum create() {
-            return new Sum(Vector3D.ZERO);
+            return new Sum(ZERO);
         }
 
         /** Construct a new instance with an initial value set to the argument.

@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -50,7 +50,7 @@ public abstract class AbstractRegionBSPTree<
     extends AbstractBSPTree<P, N> implements HyperplaneBoundedRegion<P> {
 
     /** The default {@link RegionCutRule}. */
-    private static final RegionCutRule DEFAULT_REGION_CUT_RULE = RegionCutRule.MINUS_INSIDE;
+    static final RegionCutRule DEFAULT_REGION_CUT_RULE = RegionCutRule.MINUS_INSIDE;
 
     /** Value used to indicate an unknown size. */
     private static final double UNKNOWN_SIZE = -1.0;
@@ -109,7 +109,7 @@ public abstract class AbstractRegionBSPTree<
         root.setLocationValue(RegionLocation.INSIDE);
     }
 
-    /** Modify this instance so that is is completely empty.
+    /** Modify this instance so that is completely empty.
      * @see #isEmpty()
      */
     public void setEmpty() {
@@ -423,7 +423,7 @@ public abstract class AbstractRegionBSPTree<
     /** Recursively switch all inside nodes to outside nodes and vice versa.
      * @param node the node at the root of the subtree to switch
      */
-    private void complementRecursive(final AbstractRegionNode<P, N> node) {
+    void complementRecursive(final AbstractRegionNode<P, N> node) {
         if (node != null) {
             final RegionLocation newLoc = (node.getLocation() == RegionLocation.INSIDE) ?
                     RegionLocation.OUTSIDE :
@@ -773,13 +773,13 @@ public abstract class AbstractRegionBSPTree<
         /** {@inheritDoc} */
         @Override
         public String toString() {
-            final StringBuilder sb = new StringBuilder();
+            final StringBuilder sb = new StringBuilder(128);
             sb.append(this.getClass().getSimpleName())
                 .append("[cut= ")
                 .append(getCut())
                 .append(", location= ")
                 .append(getLocation())
-                .append("]");
+                .append(']');
 
             return sb.toString();
         }
@@ -873,7 +873,7 @@ public abstract class AbstractRegionBSPTree<
             return a;
         }
 
-        /** Get the projected point on the region's boundary, or null if no point could be found.
+        /** Get the projected point on the region's boundary, or {@code null} if no point could be found.
          * @return the projected point on the region's boundary
          */
         public P getProjected() {
@@ -947,6 +947,11 @@ public abstract class AbstractRegionBSPTree<
     private static final class UnionOperator<P extends Point<P>, N extends AbstractRegionNode<P, N>>
         extends RegionMergeOperator<P, N> {
 
+        /** Create an instance. */
+        UnionOperator() {
+            // Allow package level instantiation
+        }
+
         /** {@inheritDoc} */
         @Override
         protected N mergeLeaf(final N node1, final N node2) {
@@ -966,6 +971,11 @@ public abstract class AbstractRegionBSPTree<
     private static final class IntersectionOperator<P extends Point<P>, N extends AbstractRegionNode<P, N>>
         extends RegionMergeOperator<P, N> {
 
+        /** Create an instance. */
+        IntersectionOperator() {
+            // Allow package level instantiation
+        }
+
         /** {@inheritDoc} */
         @Override
         protected N mergeLeaf(final N node1, final N node2) {
@@ -984,6 +994,11 @@ public abstract class AbstractRegionBSPTree<
      */
     private static final class DifferenceOperator<P extends Point<P>, N extends AbstractRegionNode<P, N>>
         extends RegionMergeOperator<P, N> {
+
+        /** Create an instance. */
+        DifferenceOperator() {
+            // Allow package level instantiation
+        }
 
         /** {@inheritDoc} */
         @Override
@@ -1016,6 +1031,11 @@ public abstract class AbstractRegionBSPTree<
      */
     private static final class XorOperator<P extends Point<P>, N extends AbstractRegionNode<P, N>>
         extends RegionMergeOperator<P, N> {
+
+        /** Create an instance. */
+        XorOperator() {
+            // Allow package level instantiation
+        }
 
         /** {@inheritDoc} */
         @Override
@@ -1052,6 +1072,11 @@ public abstract class AbstractRegionBSPTree<
         /** Flag set to true if the tree was modified during the operation. */
         private boolean modifiedTree;
 
+        /** Create an instance. */
+        Condenser() {
+            // Allow package level instantiation
+        }
+
         /** Condense the nodes in the subtree rooted at the given node. Redundant child nodes are
          * removed. The tree is invalidated if the tree structure was modified.
          * @param node the root node of the subtree to condense
@@ -1068,7 +1093,7 @@ public abstract class AbstractRegionBSPTree<
         /** Recursively condense nodes that have children with homogenous location attributes
          * (eg, both inside, both outside) into single nodes.
          * @param node the root of the subtree to condense
-         * @return the location of the successfully condensed subtree or null if no condensing was
+         * @return the location of the successfully condensed subtree or {@code null} if no condensing was
          *      able to be performed
          */
         private RegionLocation condenseRecursive(final N node) {

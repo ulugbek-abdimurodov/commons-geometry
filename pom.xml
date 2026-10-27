@@ -15,12 +15,12 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.apache.commons</groupId>
     <artifactId>commons-parent</artifactId>
-    <version>58</version>
+    <version>96</version>
   </parent>
 
   <artifactId>commons-geometry-parent</artifactId>
@@ -59,9 +59,8 @@
         in the older "1.x" version format. -->
     <maven.compiler.source>1.${commons.compiler.release}</maven.compiler.source>
     <maven.compiler.target>1.${commons.compiler.release}</maven.compiler.target>
-    <!-- MathJax configuration also includes the prerequisite polyfill.min.js script.
-         See the maven-javadoc-plugin plugin. -->
-    <geometry.mathjax.url>https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js</geometry.mathjax.url>
+    <!-- MathJax configuration. See the maven-javadoc-plugin plugin. -->
+    <geometry.mathjax.url>https://commons.apache.org/js/mathjax/tex-mml-chtml.js</geometry.mathjax.url>
     <!-- Workaround to avoid duplicating config files. -->
     <geometry.parent.dir>${basedir}</geometry.parent.dir>
 
@@ -77,7 +76,7 @@
     <commons.scmPubCheckoutDirectory>site-content</commons.scmPubCheckoutDirectory>
 
     <!--
-        Override so that "mvn commons:download-page" will generates a web page
+        Override so that "mvn commons:download-page" will generate a web page
         referring to the files created by the "dist-archive" module.
         Temporary workaround?
     -->
@@ -86,8 +85,8 @@
     <doclint.javadoc.qualifier></doclint.javadoc.qualifier>
 
     <!-- Dependency versions -->
-    <commons.numbers.version>1.1</commons.numbers.version>
-    <commons.rng.version>1.5</commons.rng.version>
+    <commons.numbers.version>1.2</commons.numbers.version>
+    <commons.rng.version>1.6</commons.rng.version>
 
     <!-- Workaround to avoid the SVN site checkout in all modules.
          This flag should be deactivated by child modules. -->
@@ -105,14 +104,13 @@
     <module>commons-geometry-core</module>
     <module>commons-geometry-euclidean</module>
     <module>commons-geometry-spherical</module>
-    <module>commons-geometry-hull</module>
     <module>commons-geometry-enclosing</module>
     <module>commons-geometry-io-core</module>
     <module>commons-geometry-io-euclidean</module>
   </modules>
 
   <scm>
-    <connection>scm:git:http://gitbox.apache.org/repos/asf/commons-geometry.git</connection>
+    <connection>scm:git:https://gitbox.apache.org/repos/asf/commons-geometry.git</connection>
     <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/commons-geometry.git</developerConnection>
     <url>https://gitbox.apache.org/repos/asf/commons-geometry.git</url>
   </scm>
@@ -198,17 +196,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>buildnumber-maven-plugin</artifactId>
-        <configuration>
-          <!-- buildnumber-maven-plugin:
-            "for git getLastChangedRevision() returns null instead of the last revision"
-            Override CP to use the last revision of the repository (OK for release jars). -->
-          <useLastCommittedRevision>false</useLastCommittedRevision>
-        </configuration>
-      </plugin>
-
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
@@ -217,7 +204,6 @@
           </compilerArgs>
         </configuration>
       </plugin>
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -248,7 +234,7 @@
         <configuration>
           <threshold>Normal</threshold>
           <effort>Default</effort>
-          <excludeFilterFile>${geometry.parent.dir}/src/main/resources/spotbugs/spotbugs-exclude-filter.xml</excludeFilterFile>
+          <excludeFilterFile>${geometry.parent.dir}/src/conf/spotbugs/spotbugs-exclude-filter.xml</excludeFilterFile>
         </configuration>
         <executions>
           <execution>
@@ -264,9 +250,9 @@
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
           <includeTestSourceDirectory>true</includeTestSourceDirectory>
-          <configLocation>${geometry.parent.dir}/src/main/resources/checkstyle/checkstyle.xml</configLocation>
-          <headerLocation>${geometry.parent.dir}/src/main/resources/checkstyle/license-header.txt</headerLocation>
-          <suppressionsLocation>${geometry.parent.dir}/src/main/resources/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
+          <configLocation>${geometry.parent.dir}/src/conf/checkstyle/checkstyle.xml</configLocation>
+          <headerLocation>${geometry.parent.dir}/src/conf/checkstyle/license-header.txt</headerLocation>
+          <suppressionsLocation>${geometry.parent.dir}/src/conf/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
           <enableRulesSummary>false</enableRulesSummary>
           <logViolationsToConsole>true</logViolationsToConsole>
           <failOnViolation>true</failOnViolation>
@@ -290,7 +276,7 @@
           <skipEmptyReport>false</skipEmptyReport>
           <analysisCache>true</analysisCache>
           <rulesets>
-            <ruleset>${geometry.parent.dir}/src/main/resources/pmd/pmd-ruleset.xml</ruleset>
+            <ruleset>${geometry.parent.dir}/src/conf/pmd/pmd-ruleset.xml</ruleset>
           </rulesets>
           <excludeRoots>
             <excludeRoot>target/generated-sources/annotations</excludeRoot>
@@ -310,7 +296,7 @@
         <artifactId>apache-rat-plugin</artifactId>
         <configuration>
         <!--
-          Needed for command-line access, e.g mvn apache-rat:rat and mvn apache-rat:check
+          Needed for command-line access, e.g. mvn apache-rat:rat and mvn apache-rat:check
           Below should agree with config in <reporting> section, so the site
           gets consistent output.
         -->
@@ -328,6 +314,13 @@
             <exclude>src/site/resources/release-notes/RELEASE-NOTES-*.txt</exclude>
             <exclude>src/site/resources/txt/userguide/stress/**</exclude>
             <exclude>dist-archive/**</exclude>
+            <exclude>commons-geometry-io-euclidean/src/test/resources/models/cube-minus-sphere.csv</exclude>
+            <exclude>commons-geometry-io-euclidean/src/test/resources/models/cube-minus-sphere.txt</exclude>
+            <exclude>commons-geometry-io-euclidean/src/test/resources/models/cube.csv</exclude>
+            <exclude>commons-geometry-io-euclidean/src/test/resources/models/cube.txt</exclude>
+            <exclude>commons-geometry-io-euclidean/src/test/resources/models/empty.csv</exclude>
+            <exclude>commons-geometry-io-euclidean/src/test/resources/models/empty.stl</exclude>
+            <exclude>commons-geometry-io-euclidean/src/test/resources/models/empty.txt</exclude>
           </excludes>
         </configuration>
       </plugin>
@@ -338,7 +331,7 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <!-- Enable MathJax -->
-          <additionalOptions>${doclint.javadoc.qualifier} --allow-script-in-comments -header '&lt;script src="https://polyfill.io/v3/polyfill.min.js?features=es6"&gt;&lt;/script&gt;&lt;script type="text/javascript" async src="${geometry.mathjax.url}"&gt;&lt;/script&gt;'</additionalOptions>
+          <additionalOptions>${doclint.javadoc.qualifier} --allow-script-in-comments -header '&lt;script type="text/javascript" async src="${geometry.mathjax.url}"&gt;&lt;/script&gt;'</additionalOptions>
           <links>
             <link>https://commons.apache.org/proper/commons-numbers/commons-numbers-core/javadocs/api-${commons.numbers.version}/</link>
             <link>https://commons.apache.org/proper/commons-numbers/commons-numbers-quaternion/javadocs/api-${commons.numbers.version}/</link>
@@ -441,16 +434,16 @@
         <configuration>
           <threshold>Normal</threshold>
           <effort>Default</effort>
-          <excludeFilterFile>${geometry.parent.dir}/src/main/resources/spotbugs/spotbugs-exclude-filter.xml</excludeFilterFile>
+          <excludeFilterFile>${geometry.parent.dir}/src/conf/spotbugs/spotbugs-exclude-filter.xml</excludeFilterFile>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
-          <configLocation>${geometry.parent.dir}/src/main/resources/checkstyle/checkstyle.xml</configLocation>
-          <headerLocation>${geometry.parent.dir}/src/main/resources/checkstyle/license-header.txt</headerLocation>
-          <suppressionsLocation>${geometry.parent.dir}/src/main/resources/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
+          <configLocation>${geometry.parent.dir}/src/conf/checkstyle/checkstyle.xml</configLocation>
+          <headerLocation>${geometry.parent.dir}/src/conf/checkstyle/license-header.txt</headerLocation>
+          <suppressionsLocation>${geometry.parent.dir}/src/conf/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
           <enableRulesSummary>false</enableRulesSummary>
           <includeResources>false</includeResources>
         </configuration>
@@ -471,7 +464,7 @@
           <skipEmptyReport>false</skipEmptyReport>
           <analysisCache>true</analysisCache>
           <rulesets>
-            <ruleset>${geometry.parent.dir}/src/main/resources/pmd/pmd-ruleset.xml</ruleset>
+            <ruleset>${geometry.parent.dir}/src/conf/pmd/pmd-ruleset.xml</ruleset>
           </rulesets>
           <excludeRoots>
             <excludeRoot>target/generated-sources/annotations</excludeRoot>
@@ -492,7 +485,7 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <!-- Enable MathJax -->
-          <additionalOptions>${doclint.javadoc.qualifier} --allow-script-in-comments -header '&lt;script src="https://polyfill.io/v3/polyfill.min.js?features=es6"&gt;&lt;/script&gt;&lt;script type="text/javascript" async src="${geometry.mathjax.url}"&gt;&lt;/script&gt;'</additionalOptions>
+          <additionalOptions>${doclint.javadoc.qualifier} --allow-script-in-comments -header '&lt;script type="text/javascript" async src="${geometry.mathjax.url}"&gt;&lt;/script&gt;'</additionalOptions>
           <links>
             <link>https://commons.apache.org/proper/commons-numbers/commons-numbers-core/javadocs/api-${commons.numbers.version}/</link>
             <link>https://commons.apache.org/proper/commons-numbers/commons-numbers-quaternion/javadocs/api-${commons.numbers.version}/</link>
@@ -561,11 +554,11 @@
                     <exec executable="svn" failifexecutionfails="false">
                       <arg line="checkout --depth immediates ${commons.scmPubUrl} ${commons.scmPubCheckoutDirectory}" />
                     </exec>
-                    <!-- Create the directory in the event that no svn exectuable is on the path -->
+                    <!-- Create the directory in the event that no svn executable is on the path -->
                     <mkdir dir="${commons.scmPubCheckoutDirectory}"/>
 
                     <echo file="${commons.scmPubCheckoutDirectory}.README">The '${commons.scmPubCheckoutDirectory}' directory is controlled by "subversion".
-Running "svn up" will download *all* the files of the live web site at
+Running "svn up" will download *all* the files of the live website at
     https://commons.apache.org/geometry
 This is avoided by creating an empty directory when svn is not available.
                     </echo>

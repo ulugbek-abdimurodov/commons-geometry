@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -38,7 +38,7 @@ public final class TestLineSegmentCollection implements HyperplaneSubset<TestPoi
     /** Create a new instance with the given line segments. The segments
      * are all assumed to lie on the same hyperplane.
      * @param segments the segments to use in the collection
-     * @throws IllegalArgumentException if the collection is null or empty
+     * @throws IllegalArgumentException if the collection is {@code null} or empty
      */
     public TestLineSegmentCollection(final List<TestLineSegment> segments) {
         this.segments = Collections.unmodifiableList(new ArrayList<>(segments));
@@ -147,7 +147,7 @@ public final class TestLineSegmentCollection implements HyperplaneSubset<TestPoi
     @Override
     public RegionLocation classify(final TestPoint2D point) {
 
-        // simply return the first value that is not outside;
+        // simply return the first value that is not outside.
         // this is decidedly not robust but should work for testing purposes
         for (final TestLineSegment seg : segments) {
             final RegionLocation loc = seg.classify(point);

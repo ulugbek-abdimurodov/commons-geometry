@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -32,10 +32,10 @@ import org.apache.commons.geometry.io.euclidean.threed.SimpleFacetDefinition;
 public class TextStlFacetDefinitionReader implements FacetDefinitionReader {
 
     /** Underlying reader instance. */
-    private Reader reader;
+    private final Reader reader;
 
     /** Text parser. */
-    private SimpleTextParser parser;
+    private final SimpleTextParser parser;
 
     /** Flag indicating if the start of a solid definition was detected. */
     private boolean foundSolidStart;
@@ -54,8 +54,8 @@ public class TextStlFacetDefinitionReader implements FacetDefinitionReader {
         this.parser = new SimpleTextParser(reader);
     }
 
-    /** Get the name of the STL solid being read or null if no name was specified.
-     * @return the name of the STL solid being read or null if no name was specified
+    /** Get the name of the STL solid being read or {@code null} if no name was specified.
+     * @return the name of the STL solid being read or {@code null} if no name was specified
      * @throws IllegalStateException if a data format error occurs
      * @throws java.io.UncheckedIOException if an I/O error occurs
      */
@@ -73,7 +73,7 @@ public class TextStlFacetDefinitionReader implements FacetDefinitionReader {
 
             nextWord();
 
-            int choice = parser.chooseIgnoreCase(
+            final int choice = parser.chooseIgnoreCase(
                     StlConstants.FACET_START_KEYWORD,
                     StlConstants.SOLID_END_KEYWORD);
 
@@ -121,7 +121,7 @@ public class TextStlFacetDefinitionReader implements FacetDefinitionReader {
     }
 
     /** Ensure that an STL solid definition is in the process of being read. If not, the beginning
-     * of a the definition is attempted to be read from the input.
+     * of the definition is attempted to be read from the input.
      * @throws IllegalStateException if a data format error occurs
      * @throws java.io.UncheckedIOException if an I/O error occurs
      */
@@ -189,10 +189,10 @@ public class TextStlFacetDefinitionReader implements FacetDefinitionReader {
                 .getCurrentTokenAsDouble();
     }
 
-    /** Return a trimmed version of the given string or null if the string contains
+    /** Return a trimmed version of the given string or {@code null} if the string contains
      * only whitespace.
      * @param str input stream
-     * @return a trimmed version of the given string or null if the string contains only
+     * @return a trimmed version of the given string or {@code null} if the string contains only
      *      whitespace
      */
     private static String trimmedOrNull(final String str) {

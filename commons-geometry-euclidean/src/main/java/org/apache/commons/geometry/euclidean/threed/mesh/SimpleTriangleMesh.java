@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -72,7 +72,7 @@ public final class SimpleTriangleMesh implements TriangleMesh {
      * @param bounds mesh bounds
      * @param precision precision context used when creating face polygons
      */
-    private SimpleTriangleMesh(final List<Vector3D> vertices, final List<int[]> faces, final Bounds3D bounds,
+    SimpleTriangleMesh(final List<Vector3D> vertices, final List<int[]> faces, final Bounds3D bounds,
             final Precision.DoubleEquivalence precision) {
         this.vertices = Collections.unmodifiableList(vertices);
         this.faces = Collections.unmodifiableList(faces);
@@ -196,7 +196,7 @@ public final class SimpleTriangleMesh implements TriangleMesh {
     /** {@inheritDoc} */
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder(128);
         sb.append(getClass().getSimpleName())
             .append("[vertexCount= ")
             .append(getVertexCount())
@@ -358,7 +358,7 @@ public final class SimpleTriangleMesh implements TriangleMesh {
         /** {@inheritDoc} */
         @Override
         public String toString() {
-            final StringBuilder sb = new StringBuilder();
+            final StringBuilder sb = new StringBuilder(256);
             sb.append(getClass().getSimpleName())
                 .append("[index= ")
                 .append(getIndex())
@@ -436,7 +436,7 @@ public final class SimpleTriangleMesh implements TriangleMesh {
          * @param precision precision context used for floating point comparisons; may
          *      be null if vertices are not to be combined in this builder.
          */
-        private Builder(final Precision.DoubleEquivalence precision) {
+        Builder(final Precision.DoubleEquivalence precision) {
             Objects.requireNonNull(precision, "Precision context must not be null");
 
             this.precision = precision;

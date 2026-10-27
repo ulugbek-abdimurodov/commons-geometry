@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -40,7 +40,7 @@ public interface Vector<V extends Vector<V>> extends Spatial {
     /** Get the L<sub>2</sub> norm (commonly known as the Euclidean norm) for the vector.
      * This corresponds to the common notion of vector magnitude or length and
      * is defined as the square root of the sum of the squares of all vector components.
-     * @see <a href="http://mathworld.wolfram.com/L2-Norm.html">L2 Norm</a>
+     * @see <a href="https://mathworld.wolfram.com/L2-Norm.html">L2 Norm</a>
      * @return L<sub>2</sub> norm for the vector
      */
     double norm();
@@ -99,10 +99,10 @@ public interface Vector<V extends Vector<V>> extends Spatial {
      */
     V normalize();
 
-    /** Attempt to compute a normalized vector aligned with the instance, returning null if
+    /** Attempt to compute a normalized vector aligned with the instance, returning {@code null} if
      * such a vector cannot be computed. This method is equivalent to {@link #normalize()}
      * but returns null instead of throwing an exception on failure.
-     * @return normalized vector or null if such a vector cannot be computed, i.e. if the
+     * @return normalized vector or {@code null} if such a vector cannot be computed, i.e. if the
      *      norm is zero, NaN, or infinite
      * @see #normalize()
      */

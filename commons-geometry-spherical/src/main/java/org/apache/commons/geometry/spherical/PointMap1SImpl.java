@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -38,10 +38,10 @@ import org.apache.commons.numbers.core.Precision;
 final class PointMap1SImpl<V>
     extends AbstractPointMap1D<Point1S, V> {
 
-    /** Minimum key in the map, or null if not known. */
+    /** Minimum key in the map, or {@code null} if not known. */
     private Point1S minKey;
 
-    /** Maximum key in the map, or null if not known. */
+    /** Maximum key in the map, or {@code null} if not known. */
     private Point1S maxKey;
 
     /** Modification version of the map. */
@@ -210,7 +210,7 @@ final class PointMap1SImpl<V>
     /** Null-safe method to get the value from a map entry.
      * @param <V> Value type
      * @param entry map entry
-     * @return map value or null if {@code entry} is null
+     * @return map value or {@code null} if {@code entry} is {@code null}
      */
     private static <V> V getValue(final Entry<?, V> entry) {
         return entry != null ?
@@ -222,6 +222,11 @@ final class PointMap1SImpl<V>
      */
     private final class KeySet
         extends AbstractSet<Point1S> {
+
+        /** Create an instance. */
+        KeySet() {
+            // Allow package level instantiation
+        }
 
         /** {@inheritDoc} */
         @Override
@@ -246,6 +251,11 @@ final class PointMap1SImpl<V>
      */
     private final class EntrySet
         extends AbstractSet<Entry<Point1S, V>> {
+
+        /** Create an instance. */
+        EntrySet() {
+            // Allow package level instantiation
+        }
 
         /** {@inheritDoc} */
         @Override
@@ -337,7 +347,7 @@ final class PointMap1SImpl<V>
         private int remaining;
 
         /** Expected modification version of the map. */
-        private int expectedVersion;
+        private final int expectedVersion;
 
         /** Construct a new instance with the given reference point.
          * @param refPt reference point
@@ -406,7 +416,7 @@ final class PointMap1SImpl<V>
         /** Get a {@link DistancedValue} instance containing the next entry from the given
          * iterator.
          * @param it iterator to get the next value from
-         * @return distanced value containing the next entry from the iterator or null if the iterator
+         * @return distanced value containing the next entry from the iterator or {@code null} if the iterator
          *      does not contain any more elements
          */
         private DistancedValue<Entry<Point1S, V>> getNextEntry(final Iterator<Entry<Point1S, V>> it) {

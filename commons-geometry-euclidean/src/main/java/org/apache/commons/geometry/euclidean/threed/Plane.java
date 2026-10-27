@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -27,7 +27,7 @@ import org.apache.commons.geometry.euclidean.threed.rotation.QuaternionRotation;
 import org.apache.commons.geometry.euclidean.twod.ConvexArea;
 import org.apache.commons.numbers.core.Precision;
 
-/** Class representing a plane in 3 dimensional Euclidean space. Each plane is defined by a
+/** Class representing a plane in 3-dimensional Euclidean space. Each plane is defined by a
  * {@link #getNormal() normal} and an {@link #getOriginOffset() origin offset}. If \(\vec{n}\) is the plane normal,
  * \(d\) is the origin offset, and \(p\) and \(q\) are any points in the plane, then the following are true:
  * <ul>
@@ -213,7 +213,7 @@ public class Plane extends AbstractHyperplane<Vector3D> {
 
     /** Get the intersection of a line with this plane.
      * @param line line intersecting the instance
-     * @return intersection point between between the line and the instance (null if
+     * @return intersection point between the line and the instance (null if
      *         the line is parallel to the instance)
      */
     public Vector3D intersection(final Line3D line) {
@@ -238,10 +238,10 @@ public class Plane extends AbstractHyperplane<Vector3D> {
      * is the normal of the current instance and <code>n<sub>2</sub></code> is the normal
      * of the argument.
      *
-     * <p>Null is returned if the planes are parallel.</p>
+     * <p>{@code null} is returned if the planes are parallel.</p>
      *
      * @param other other plane
-     * @return line at the intersection of the instance and the other plane, or null
+     * @return line at the intersection of the instance and the other plane, or {@code null}
      *      if no such line exists
      */
     public Line3D intersection(final Plane other) {
@@ -387,7 +387,7 @@ public class Plane extends AbstractHyperplane<Vector3D> {
     /** {@inheritDoc} */
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder(128);
         sb.append(getClass().getSimpleName())
             .append("[origin= ")
             .append(getOrigin())
@@ -403,7 +403,7 @@ public class Plane extends AbstractHyperplane<Vector3D> {
      * @param plane1 first plane1
      * @param plane2 second plane2
      * @param plane3 third plane2
-     * @return intersection point of the three planes or null if no unique intersection point exists
+     * @return intersection point of the three planes or {@code null} if no unique intersection point exists
      */
     public static Vector3D intersection(final Plane plane1, final Plane plane2, final Plane plane3) {
 

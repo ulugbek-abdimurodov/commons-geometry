@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -31,9 +31,9 @@ public final class Split<T> {
 
     /** Build a new instance from its parts.
      * @param minus part of the object lying on the minus side of the
-     *      splitting hyperplane or null if no such part exists
+     *      splitting hyperplane or {@code null} if no such part exists
      * @param plus part of the object lying on the plus side of the
-     *      splitting hyperplane or null if no such part exists.
+     *      splitting hyperplane or {@code null} if no such part exists.
      */
     public Split(final T minus, final T plus) {
         this.minus = minus;
@@ -41,7 +41,7 @@ public final class Split<T> {
     }
 
     /** Get the part of the object lying on the minus side of the splitting
-     * hyperplane or null if no such part exists.
+     * hyperplane or {@code null} if no such part exists.
      * @return part of the object lying on the minus side of the splitting
      *      hyperplane
      */
@@ -50,7 +50,7 @@ public final class Split<T> {
     }
 
     /** Get the part of the object lying on the plus side of the splitting
-     * hyperplane or null if no such part exists.
+     * hyperplane or {@code null} if no such part exists.
      * @return part of the object lying on the plus side of the splitting
      *      hyperplane
      */
@@ -82,7 +82,7 @@ public final class Split<T> {
     /** {@inheritDoc} */
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder(128);
         sb.append(this.getClass().getSimpleName())
             .append("[location= ")
             .append(getLocation())

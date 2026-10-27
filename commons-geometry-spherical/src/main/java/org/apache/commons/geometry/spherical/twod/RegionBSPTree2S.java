@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -60,7 +60,7 @@ public class RegionBSPTree2S extends AbstractRegionBSPTree<Point2S, RegionBSPTre
      * @see #copy(org.apache.commons.geometry.core.partitioning.bsp.BSPTree)
      */
     public RegionBSPTree2S copy() {
-        final RegionBSPTree2S result = RegionBSPTree2S.empty();
+        final RegionBSPTree2S result = empty();
         result.copy(this);
 
         return result;
@@ -264,13 +264,13 @@ public class RegionBSPTree2S extends AbstractRegionBSPTree<Point2S, RegionBSPTre
         return tree;
     }
 
-    /** BSP tree node for two dimensional spherical space.
+    /** BSP tree node for two-dimensional spherical space.
      */
     public static final class RegionNode2S extends AbstractRegionBSPTree.AbstractRegionNode<Point2S, RegionNode2S> {
         /** Simple constructor.
          * @param tree tree owning the instance.
          */
-        private RegionNode2S(final AbstractBSPTree<Point2S, RegionNode2S> tree) {
+        RegionNode2S(final AbstractBSPTree<Point2S, RegionNode2S> tree) {
             super(tree);
         }
 

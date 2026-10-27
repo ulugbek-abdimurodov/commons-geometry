@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -66,6 +66,11 @@ public abstract class AbstractPathConnector<E extends AbstractPathConnector.Conn
     /** List used to store possible point-like (zero-length) connections for the current element. */
     private final List<E> possiblePointConnections = new ArrayList<>();
 
+    /** Create an instance. */
+    public AbstractPathConnector() {
+        // Do nothing
+    }
+
     /** Add a collection of path elements to the connector and attempt to connect each new element
      * with previously added ones.
      * @param elements path elements to connect
@@ -78,7 +83,7 @@ public abstract class AbstractPathConnector<E extends AbstractPathConnector.Conn
         }
     }
 
-    /** Add a single path element to the connector, leaving it unconnected until a later call to
+    /** Add a single path element to the connector, leaving it unconnected until a later call
      * to {@link #connectPathElements(Iterable)} or {@link #computePathRoots()}.
      * @param element value to add to the connector
      * @see #connectPathElements(Iterable)
@@ -129,9 +134,9 @@ public abstract class AbstractPathConnector<E extends AbstractPathConnector.Conn
     }
 
     /** Connect the end point of the given element to the start point of another element. Returns
-     * the newly connected element or null if no forward connection was made.
+     * the newly connected element or {@code null} if no forward connection was made.
      * @param element element to connect
-     * @return the next element in the path or null if no connection was made
+     * @return the next element in the path or {@code null} if no connection was made
      */
     private E makeForwardConnection(final E element) {
         findPossibleConnections(element);
@@ -282,6 +287,11 @@ public abstract class AbstractPathConnector<E extends AbstractPathConnector.Conn
         /** Flag set to true when this element has exported its value to a path. */
         private boolean exported;
 
+        /** Create an instance. */
+        public ConnectableElement() {
+            // Do nothing
+        }
+
         /** Return true if the instance is connected to another element's start point.
          * @return true if the instance has a next element
          */
@@ -344,7 +354,7 @@ public abstract class AbstractPathConnector<E extends AbstractPathConnector.Conn
          * (or this element in the case of a loop). Each path can only be
          * exported once. Later calls to this method on this instance or any of its
          * connected elements will return null.
-         * @return the root of the path or null if the path that this element
+         * @return the root of the path or {@code null} if the path that this element
          *      belongs to has already been exported
          */
         public E exportPath() {

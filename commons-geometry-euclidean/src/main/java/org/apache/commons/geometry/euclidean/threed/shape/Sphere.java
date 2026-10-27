@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -36,7 +36,7 @@ import org.apache.commons.geometry.euclidean.threed.mesh.SimpleTriangleMesh;
 import org.apache.commons.geometry.euclidean.threed.mesh.TriangleMesh;
 import org.apache.commons.numbers.core.Precision;
 
-/** Class representing a 3 dimensional sphere in Euclidean space.
+/** Class representing a 3-dimensional sphere in Euclidean space.
  */
 public final class Sphere extends AbstractNSphere<Vector3D> implements Linecastable3D {
 
@@ -196,7 +196,7 @@ public final class Sphere extends AbstractNSphere<Vector3D> implements Linecasta
         return intersections(line, Line3D::abscissa, Line3D::distance);
     }
 
-    /** Get the first intersection point between the given line and this sphere, or null
+    /** Get the first intersection point between the given line and this sphere, or {@code null}
      * if no such point exists. The "first" intersection point is the first such point
      * encountered when traveling in the direction of the line from infinity.
      * @param line line to intersect with the sphere

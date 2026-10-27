@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,7 +16,6 @@
  */
 package org.apache.commons.geometry.euclidean.threed;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -1329,7 +1328,7 @@ class RegionBSPTree3DTest {
     }
 
     @Test
-    void testBoolean_union() throws IOException {
+    void testBoolean_union() {
         // arrange
         final double tolerance = 0.05;
         final double size = 1.0;
@@ -1409,7 +1408,7 @@ class RegionBSPTree3DTest {
     }
 
     @Test
-    void testBoolean_intersection() throws IOException {
+    void testBoolean_intersection() {
         // arrange
         final double tolerance = 0.05;
         final double size = 1.0;
@@ -1487,7 +1486,7 @@ class RegionBSPTree3DTest {
     }
 
     @Test
-    void testBoolean_xor_twoCubes() throws IOException {
+    void testBoolean_xor_twoCubes() {
         // arrange
         final double size = 1.0;
         final RegionBSPTree3D box1 = createRect(Vector3D.ZERO, Vector3D.of(size, size, size));
@@ -1523,7 +1522,7 @@ class RegionBSPTree3DTest {
     }
 
     @Test
-    void testBoolean_xor_cubeAndSphere() throws IOException {
+    void testBoolean_xor_cubeAndSphere() {
         // arrange
         final double tolerance = 0.05;
         final double size = 1.0;
@@ -1540,7 +1539,7 @@ class RegionBSPTree3DTest {
         Assertions.assertFalse(result.isFull());
 
         Assertions.assertEquals(cubeVolume(size), result.getSize(), tolerance);
-        Assertions.assertEquals(cubeSurface(size) + (sphereSurface(radius)),
+        Assertions.assertEquals(cubeSurface(size) + sphereSurface(radius),
                 result.getBoundarySize(), tolerance);
 
         EuclideanTestUtils.assertRegionLocation(result, RegionLocation.OUTSIDE,
@@ -1599,7 +1598,7 @@ class RegionBSPTree3DTest {
     }
 
     @Test
-    void testBoolean_difference() throws IOException {
+    void testBoolean_difference() {
         // arrange
         final double tolerance = 0.05;
         final double size = 1.0;
@@ -1673,7 +1672,7 @@ class RegionBSPTree3DTest {
     }
 
     @Test
-    void testBoolean_multiple() throws IOException {
+    void testBoolean_multiple() {
         // arrange
         final double tolerance = 0.05;
         final double size = 1.0;

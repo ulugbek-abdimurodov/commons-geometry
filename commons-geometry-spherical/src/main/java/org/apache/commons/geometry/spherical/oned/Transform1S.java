@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -24,7 +24,7 @@ import org.apache.commons.geometry.core.Transform;
  * {@link org.apache.commons.geometry.euclidean.oned.AffineTransformMatrix1D AffineTransformMatrix1D},
  * this class performs transformations using an internal 1D affine transformation matrix. In the
  * Euclidean case, the matrix contains a scale factor and a translation. Here, the matrix contains
- * a scale/negation factor that takes the values -1 or +1, and a rotation value. This restriction on
+ * a scale/negation factor that takes the values {@code -1} or {@code +1}, and a rotation value. This restriction on
  * the allowed values in the matrix is required in order to fulfill the geometric requirements
  * of the {@link Transform} interface. For example, if arbitrary scaling is allowed, the point {@code 0.5pi}
  * could be scaled by 4 to {@code 2pi}, which is equivalent to {@code 0pi}. However, if the inverse scaling
@@ -175,7 +175,7 @@ public final class Transform1S implements Transform<Point1S> {
     /** {@inheritDoc} */
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder(128);
 
         sb.append(this.getClass().getSimpleName())
             .append("[negate= ")

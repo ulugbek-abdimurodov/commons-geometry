@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -173,10 +173,10 @@ public final class Line3D implements Embedding<Vector3D, Vector1D> {
         return toSpace(pt.getX());
     }
 
-    /** Get the 3 dimensional point at the given abscissa position
+    /** Get the 3-dimensional point at the given abscissa position
      * on the line.
      * @param abscissa location on the line
-     * @return the 3 dimensional point at the given abscissa position
+     * @return the 3-dimensional point at the given abscissa position
      *      on the line
      */
     public Vector3D toSpace(final double abscissa) {
@@ -261,7 +261,7 @@ public final class Line3D implements Embedding<Vector3D, Vector1D> {
     /** Get the intersection point of the instance and another line.
      * @param line other line
      * @return intersection point of the instance and the other line
-     * or null if there are no intersection points
+     * or {@code null} if there are no intersection points
      */
     public Vector3D intersection(final Line3D line) {
         final Vector3D closestPt = closest(line);
@@ -302,7 +302,7 @@ public final class Line3D implements Embedding<Vector3D, Vector1D> {
     }
 
     /** Create a new line convex subset that starts at infinity and continues along
-     * the line up to the projection of the given end point.
+     * the line, up to the projection of the given end point.
      * @param endPoint point defining the end point of the line subset; the end point
      *      is equal to the projection of this point onto the line
      * @return a new, half-open line subset that ends at the given point
@@ -314,7 +314,7 @@ public final class Line3D implements Embedding<Vector3D, Vector1D> {
     }
 
     /** Create a new line convex subset that starts at infinity and continues along
-     * the line up to the given 1D location.
+     * the line, up to the given 1D location.
      * @param endLocation the 1D location of the end of the half-line
      * @return a new, half-open line subset that ends at the given 1D location
      * @throws IllegalArgumentException if {@code endLocation} is NaN or infinite

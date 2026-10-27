@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -37,7 +37,7 @@ public enum GeometryFormat3D implements GeometryFormat {
 
     /** Value representing a simple, <em>non-standard</em> text geometry format that defines facets one per line
      * by listing the coordinates of the facet vertices in order, separated by non-numeric characters (e.g. whitespace,
-     * commas, semicolons, etc). Each line follows the pattern
+     * commas, semicolons, etc.). Each line follows the pattern
      * <p>
      * <code>
      *      p1<sub>x</sub> p1<sub>y</sub> p1<sub>z</sub> p2<sub>x</sub> p2<sub>y</sub> p2<sub>z</sub> p3<sub>x</sub> p3<sub>y</sub> p3<sub>z</sub> ...

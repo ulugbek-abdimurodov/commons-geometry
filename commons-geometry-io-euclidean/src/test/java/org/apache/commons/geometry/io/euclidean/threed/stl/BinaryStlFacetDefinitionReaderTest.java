@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -121,7 +121,7 @@ class BinaryStlFacetDefinitionReaderTest {
         try (BinaryStlFacetDefinitionReader reader = new BinaryStlFacetDefinitionReader(getInput())) {
             // act/assert
             GeometryTestUtils.assertThrowsWithMessage(
-                    () -> reader.getHeader(),
+                    reader::getHeader,
                     IllegalStateException.class, "Failed to read STL header: data not available");
         }
     }
@@ -134,13 +134,13 @@ class BinaryStlFacetDefinitionReaderTest {
         try (BinaryStlFacetDefinitionReader reader = new BinaryStlFacetDefinitionReader(getInput())) {
             // act/assert
             GeometryTestUtils.assertThrowsWithMessage(
-                    () -> reader.getHeader(),
+                    reader::getHeader,
                     IllegalStateException.class, "Failed to read STL triangle count: data not available");
         }
     }
 
     @Test
-    void testGetHeader_ioException() throws IOException {
+    void testGetHeader_ioException() {
         // arrange
         final InputStream failIn = new InputStream() {
             @Override
@@ -152,7 +152,7 @@ class BinaryStlFacetDefinitionReaderTest {
         try (BinaryStlFacetDefinitionReader reader = new BinaryStlFacetDefinitionReader(failIn)) {
             // act/assert
             GeometryTestUtils.assertThrowsWithMessage(
-                    () -> reader.getHeader(),
+                    reader::getHeader,
                     UncheckedIOException.class, "IOException: read");
         }
     }
@@ -166,7 +166,7 @@ class BinaryStlFacetDefinitionReaderTest {
         try (BinaryStlFacetDefinitionReader reader = new BinaryStlFacetDefinitionReader(getInput())) {
             // act/assert
             GeometryTestUtils.assertThrowsWithMessage(
-                    () -> reader.readFacet(),
+                    reader::readFacet,
                     IllegalStateException.class, "Failed to read STL triangle at index 0: data not available");
         }
     }

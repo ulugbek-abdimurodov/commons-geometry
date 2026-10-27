@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -40,7 +40,7 @@ public final class StlFacetDefinitionReaders {
      * or text file and an appropriate reader is returned.
      * @param in input to read from
      * @param charset charset to use when checking the input for text content;
-     *      if null, the input is assumed to use the UTF-8 charset
+     *      if {@code null}, the input is assumed to use the UTF-8 charset
      * @return facet definition reader
      * @throws IllegalStateException if a parsing error occurs
      * @throws java.io.UncheckedIOException if an I/O error occurs

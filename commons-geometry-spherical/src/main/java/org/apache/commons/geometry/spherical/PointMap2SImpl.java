@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -119,7 +119,7 @@ final class PointMap2SImpl<V>
         protected void computeSplit() {
             final Vector3D.Sum sum = Vector3D.Sum.create();
 
-            for (Entry<Point2S, V> entry : this) {
+            for (final Entry<Point2S, V> entry : this) {
                 sum.add(entry.getKey().getVector());
             }
 

@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -1173,7 +1173,7 @@ class Bounds3DTest {
         /** Assert that the two collections contain the same linecast points and that the elements
          * of {@code actual} are arranged in ascending abscissa order. Note that this does <em>not</em>
          * assert that {@code expected} and {@code actual} have the same exact ordering, since the
-         * specific ordering if sensitive to floating point errors.
+         * specific ordering is sensitive to floating point errors.
          * @param expected expected collection
          * @param actual actual collection
          */

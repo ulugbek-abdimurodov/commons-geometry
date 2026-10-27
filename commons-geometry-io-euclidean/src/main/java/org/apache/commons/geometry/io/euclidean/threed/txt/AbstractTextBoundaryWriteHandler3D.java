@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -45,6 +45,11 @@ public abstract class AbstractTextBoundaryWriteHandler3D extends AbstractBoundar
 
     /** Double format function. */
     private DoubleFunction<String> doubleFormat = Double::toString;
+
+    /** Create an instance. */
+    public AbstractTextBoundaryWriteHandler3D() {
+        // Do nothing
+    }
 
     /** Get the text output default charset, used if the output does not
      * specify a charset.

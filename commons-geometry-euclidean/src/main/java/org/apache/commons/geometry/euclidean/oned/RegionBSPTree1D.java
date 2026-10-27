@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -58,7 +58,7 @@ public final class RegionBSPTree1D extends AbstractRegionBSPTree<Vector1D, Regio
      * @see #copy(org.apache.commons.geometry.core.partitioning.bsp.BSPTree)
      */
     public RegionBSPTree1D copy() {
-        final RegionBSPTree1D result = RegionBSPTree1D.empty();
+        final RegionBSPTree1D result = empty();
         result.copy(this);
 
         return result;
@@ -122,7 +122,7 @@ public final class RegionBSPTree1D extends AbstractRegionBSPTree<Vector1D, Regio
      */
     @Override
     public Split<RegionBSPTree1D> split(final Hyperplane<Vector1D> splitter) {
-        return split(splitter, RegionBSPTree1D.empty(), RegionBSPTree1D.empty());
+        return split(splitter, empty(), empty());
     }
 
     /** Get the minimum value on the inside of the region; returns {@link Double#NEGATIVE_INFINITY}
@@ -350,7 +350,7 @@ public final class RegionBSPTree1D extends AbstractRegionBSPTree<Vector1D, Regio
         /** Simple constructor.
          * @param tree the owning tree instance
          */
-        private RegionNode1D(final AbstractBSPTree<Vector1D, RegionNode1D> tree) {
+        RegionNode1D(final AbstractBSPTree<Vector1D, RegionNode1D> tree) {
             super(tree);
         }
 
@@ -371,7 +371,7 @@ public final class RegionBSPTree1D extends AbstractRegionBSPTree<Vector1D, Regio
          * @param visitor the object that will receive the min and max boundaries for the node's
          *      convex region
          */
-        private void visitNodeInterval(final BiConsumer<? super OrientedPoint, ? super OrientedPoint> visitor) {
+        void visitNodeInterval(final BiConsumer<? super OrientedPoint, ? super OrientedPoint> visitor) {
             OrientedPoint min = null;
             OrientedPoint max = null;
 
@@ -483,6 +483,11 @@ public final class RegionBSPTree1D extends AbstractRegionBSPTree<Vector1D, Regio
         /** The max boundary for the region. */
         private OrientedPoint max;
 
+        /** Create an instance. */
+        NodeRegionVisitor() {
+           // Allow package level instantiation
+        }
+
         /** {@inheritDoc} */
         @Override
         public void accept(final OrientedPoint minBoundary, final OrientedPoint maxBoundary) {
@@ -513,6 +518,11 @@ public final class RegionBSPTree1D extends AbstractRegionBSPTree<Vector1D, Regio
 
         /** The sum of the centroids of each inside interval, scaled by the size of the interval. */
         private double scaledCentroidSum;
+
+        /** Create an instance. */
+        RegionSizePropertiesVisitor() {
+           // Allow package level instantiation
+        }
 
         /** {@inheritDoc} */
         @Override

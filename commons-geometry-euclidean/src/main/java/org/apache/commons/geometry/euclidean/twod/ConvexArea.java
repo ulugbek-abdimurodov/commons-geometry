@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -244,7 +244,7 @@ public class ConvexArea extends AbstractConvexHyperplaneBoundedRegion<Vector2D, 
 
         LineConvexSubset element;
 
-        // we can skip the last element since the we know that the path is closed, meaning that the
+        // we can skip the last element since we know that the path is closed, meaning that the
         // last element's end point is equal to our start point
         for (int i = 0; i < elements.size() - 1; ++i) {
             element = elements.get(i);

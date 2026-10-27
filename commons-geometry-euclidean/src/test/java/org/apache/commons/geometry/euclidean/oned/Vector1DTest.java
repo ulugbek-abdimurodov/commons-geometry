@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -591,7 +591,7 @@ class Vector1DTest {
         final Vector1D w = Vector1D.of(1);
 
         // act/assert
-        Assertions.assertTrue(u.hashCode() != v.hashCode());
+        Assertions.assertNotEquals(u.hashCode(), v.hashCode());
         Assertions.assertEquals(u.hashCode(), w.hashCode());
 
         Assertions.assertEquals(Vector1D.of(Double.NaN).hashCode(), Vector1D.NaN.hashCode());
@@ -625,13 +625,13 @@ class Vector1DTest {
         final Vector1D d = Vector1D.of(-0.0);
 
         // act/assert
-        Assertions.assertFalse(a.equals(b));
+        Assertions.assertNotEquals(a, b);
         Assertions.assertNotEquals(a.hashCode(), b.hashCode());
 
-        Assertions.assertTrue(a.equals(c));
+        Assertions.assertEquals(a, c);
         Assertions.assertEquals(a.hashCode(), c.hashCode());
 
-        Assertions.assertTrue(b.equals(d));
+        Assertions.assertEquals(b, d);
         Assertions.assertEquals(b.hashCode(), d.hashCode());
     }
 

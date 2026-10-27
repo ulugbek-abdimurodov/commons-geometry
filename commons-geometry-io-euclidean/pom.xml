@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 -->
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
@@ -40,6 +40,11 @@
     <!-- Workaround to avoid duplicating config files. -->
     <geometry.parent.dir>${basedir}/..</geometry.parent.dir>
     <geometry.jira.component>io-euclidean</geometry.jira.component>
+    <!-- Change from commons-parent of 1.0 as some edge cases cannot be reached -->
+    <commons.jacoco.instructionRatio>0.99</commons.jacoco.instructionRatio>
+    <commons.jacoco.branchRatio>0.99</commons.jacoco.branchRatio>
+    <commons.jacoco.lineRatio>0.99</commons.jacoco.lineRatio>
+    <commons.jacoco.complexityRatio>0.99</commons.jacoco.complexityRatio>
   </properties>
 
   <dependencies>
@@ -92,7 +97,7 @@
         <artifactId>apache-rat-plugin</artifactId>
         <configuration>
         <!--
-          Needed for command-line access, e.g mvn apache-rat:rat and mvn apache-rat:check
+          Needed for command-line access, e.g. mvn apache-rat:rat and mvn apache-rat:check
           Below should agree with config in <reporting> section, so the site
           gets consistent output.
         -->

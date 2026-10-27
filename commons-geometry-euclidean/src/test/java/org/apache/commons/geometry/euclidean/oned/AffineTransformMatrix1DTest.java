@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -463,8 +463,10 @@ class AffineTransformMatrix1DTest {
     @Test
     void testApplyDirection_illegalNorm() {
         // act/assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> AffineTransformMatrix1D.createScale(0).applyDirection(Vector1D.Unit.PLUS));
-        Assertions.assertThrows(IllegalArgumentException.class, () -> AffineTransformMatrix1D.createScale(2).applyDirection(Vector1D.ZERO));
+        final AffineTransformMatrix1D transform = AffineTransformMatrix1D.createScale(0);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> transform.applyDirection(Vector1D.Unit.PLUS));
+        final AffineTransformMatrix1D transform2 = AffineTransformMatrix1D.createScale(0);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> transform2.applyDirection(Vector1D.ZERO));
     }
 
     @Test
@@ -628,7 +630,8 @@ class AffineTransformMatrix1DTest {
     @Test
     void testNormalTransform_nonInvertible() {
         // act/assert
-        Assertions.assertThrows(IllegalStateException.class, () -> AffineTransformMatrix1D.createScale(0).normalTransform());
+        final AffineTransformMatrix1D transform = AffineTransformMatrix1D.createScale(0);
+        Assertions.assertThrows(IllegalStateException.class, transform::normalTransform);
     }
 
     @Test
@@ -772,12 +775,12 @@ class AffineTransformMatrix1DTest {
         final AffineTransformMatrix1D d = AffineTransformMatrix1D.of(-0.0, 0.0);
 
         // act/assert
-        Assertions.assertFalse(a.equals(b));
+        Assertions.assertNotEquals(a, b);
 
-        Assertions.assertTrue(a.equals(c));
+        Assertions.assertEquals(a, c);
         Assertions.assertEquals(a.hashCode(), c.hashCode());
 
-        Assertions.assertTrue(b.equals(d));
+        Assertions.assertEquals(b, d);
         Assertions.assertEquals(b.hashCode(), d.hashCode());
     }
 

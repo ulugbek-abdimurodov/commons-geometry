@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -145,7 +145,7 @@ public final class PolarCoordinates implements Spatial {
      *
      * @param other Object to test for equality to this
      * @return true if two PolarCoordinates objects are equal, false if
-     *         object is null, not an instance of PolarCoordinates, or
+     *         object is {@code null}, not an instance of PolarCoordinates, or
      *         not equal to this PolarCoordinates instance
      *
      */

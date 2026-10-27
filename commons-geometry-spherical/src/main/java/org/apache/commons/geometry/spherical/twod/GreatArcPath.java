@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -38,7 +38,7 @@ public final class GreatArcPath implements BoundarySource2S {
     /** Simple constructor. No validation is performed on the input arc.
      * @param arcs arcs for the path, in connection order
      */
-    private GreatArcPath(final List<GreatArc> arcs) {
+    GreatArcPath(final List<GreatArc> arcs) {
         this.arcs = Collections.unmodifiableList(arcs);
     }
 
@@ -55,8 +55,8 @@ public final class GreatArcPath implements BoundarySource2S {
         return arcs;
     }
 
-    /** Get the start arc for the path or null if the path is empty.
-     * @return the start arc for the path or null if the path is empty
+    /** Get the start arc for the path or {@code null} if the path is empty.
+     * @return the start arc for the path or {@code null} if the path is empty
      */
     public GreatArc getStartArc() {
         if (!isEmpty()) {
@@ -65,8 +65,8 @@ public final class GreatArcPath implements BoundarySource2S {
         return null;
     }
 
-    /** Get the end arc for the path or null if the path is empty.
-     * @return the end arc for the path or null if the path is empty
+    /** Get the end arc for the path or {@code null} if the path is empty.
+     * @return the end arc for the path or {@code null} if the path is empty
      */
     public GreatArc getEndArc() {
         if (!isEmpty()) {
@@ -75,7 +75,7 @@ public final class GreatArcPath implements BoundarySource2S {
         return null;
     }
 
-    /** Get the start vertex for the path or null if the path is empty
+    /** Get the start vertex for the path or {@code null} if the path is empty
      * or consists of a single, full arc.
      * @return the start vertex for the path
      */
@@ -84,7 +84,7 @@ public final class GreatArcPath implements BoundarySource2S {
         return (arc != null) ? arc.getStartPoint() : null;
     }
 
-    /** Get the end vertex for the path or null if the path is empty
+    /** Get the end vertex for the path or {@code null} if the path is empty
      * or consists of a single, full arc.
      * @return the end vertex for the path
      */
@@ -173,7 +173,7 @@ public final class GreatArcPath implements BoundarySource2S {
     */
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder(128);
         sb.append(this.getClass().getSimpleName())
             .append('[');
 
@@ -219,7 +219,7 @@ public final class GreatArcPath implements BoundarySource2S {
      * to calling {@link #fromVertices(Collection, boolean, Precision.DoubleEquivalence)
      * fromPoints(points, true, precision)}.
      * @param vertices the points to construct the path from
-     * @param precision precision precision context used to construct the arc instances for the
+     * @param precision precision context used to construct the arc instances for the
      *      path
      * @return a new path formed by connecting the given vertices
      * @see #fromVertices(Collection, boolean, Precision.DoubleEquivalence)
@@ -265,7 +265,7 @@ public final class GreatArcPath implements BoundarySource2S {
      * context. The precision context is used when building arcs from points
      * and may be omitted if raw points are not used.
      * @param precision precision context to use when building arcs from
-     *      raw points; may be null if raw points are not used.
+     *      raw points; may be {@code null} if raw points are not used.
      * @return a new {@link Builder} instance
      */
     public static Builder builder(final Precision.DoubleEquivalence precision) {
@@ -308,7 +308,7 @@ public final class GreatArcPath implements BoundarySource2S {
          * @param precision precision context to use when creating arcs
          *      from points
          */
-        private Builder(final Precision.DoubleEquivalence precision) {
+        Builder(final Precision.DoubleEquivalence precision) {
             setPrecision(precision);
         }
 
@@ -324,7 +324,7 @@ public final class GreatArcPath implements BoundarySource2S {
             return this;
         }
 
-        /** Get the arc at the start of the path or null if it does not exist.
+        /** Get the arc at the start of the path or {@code null} if it does not exist.
          * @return the arc at the start of the path
          */
         public GreatArc getStartArc() {
@@ -335,7 +335,7 @@ public final class GreatArcPath implements BoundarySource2S {
             return start;
         }
 
-        /** Get the arc at the end of the path or null if it does not exist.
+        /** Get the arc at the end of the path or {@code null} if it does not exist.
          * @return the arc at the end of the path
          */
         public GreatArc getEndArc() {
@@ -383,7 +383,7 @@ public final class GreatArcPath implements BoundarySource2S {
                 endVertex = vertex;
                 endVertexPrecision = vertexPrecision;
             } else if (!endVertex.eq(vertex, vertexPrecision)) {
-                // only add the vertex if its not equal to the end point
+                // only add the vertex if it's not equal to the end point
                 // of the last arc
                 appendInternal(GreatCircles.arcFromPoints(endVertex, vertex, endVertexPrecision));
             }
@@ -515,7 +515,7 @@ public final class GreatArcPath implements BoundarySource2S {
                 closePath();
             }
 
-            // combine all of the arcs
+            // combine all the arcs
             List<GreatArc> result = null;
 
             if (prependedArcs != null) {
@@ -569,7 +569,7 @@ public final class GreatArcPath implements BoundarySource2S {
 
         /** Validate that the given arcs are connected, meaning that the end point of {@code previous}
          * is equivalent to the start point of {@code next}. The arcs are considered valid if either
-         * arc is null.
+         * arc is {@code null}.
          * @param previous previous arc
          * @param next next arc
          * @throws IllegalStateException if previous and next are not null and the end point of previous
@@ -642,10 +642,10 @@ public final class GreatArcPath implements BoundarySource2S {
             prependedArcs.add(arc);
         }
 
-        /** Get the first element in the list or null if the list is null
+        /** Get the first element in the list or {@code null} if the list is {@code null}
          * or empty.
          * @param list the list to return the first item from
-         * @return the first item from the given list or null if it does not exist
+         * @return the first item from the given list or {@code null} if it does not exist
          */
         private GreatArc getFirst(final List<GreatArc> list) {
             if (list != null && !list.isEmpty()) {
@@ -654,10 +654,10 @@ public final class GreatArcPath implements BoundarySource2S {
             return null;
         }
 
-        /** Get the last element in the list or null if the list is null
+        /** Get the last element in the list or {@code null} if the list is {@code null}
          * or empty.
          * @param list the list to return the last item from
-         * @return the last item from the given list or null if it does not exist
+         * @return the last item from the given list or {@code null} if it does not exist
          */
         private GreatArc getLast(final List<GreatArc> list) {
             if (list != null && !list.isEmpty()) {

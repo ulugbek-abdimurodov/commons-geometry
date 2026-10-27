@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -230,7 +230,7 @@ public final class EuclideanTestUtils {
     }
 
     /**
-     * Asserts that the given value is negative infinity..
+     * Asserts that the given value is negative infinity.
      *
      * @param value
      */
@@ -240,7 +240,7 @@ public final class EuclideanTestUtils {
         Assertions.assertTrue(value < 0, msg);
     }
 
-    /** Assert that all of the given points lie within the specified location relative to
+    /** Assert that all the given points lie within the specified location relative to
      * {@code region}.
      * @param region
      * @param loc
@@ -252,7 +252,7 @@ public final class EuclideanTestUtils {
         }
     }
 
-    /** Assert that all of the given points lie within the specified location relative to
+    /** Assert that all the given points lie within the specified location relative to
      * {@code region}.
      * @param region
      * @param loc
@@ -264,7 +264,7 @@ public final class EuclideanTestUtils {
         }
     }
 
-    /** Assert that all of the given points lie within the specified location relative to
+    /** Assert that all the given points lie within the specified location relative to
      * {@code region}.
      * @param region
      * @param loc
@@ -276,7 +276,7 @@ public final class EuclideanTestUtils {
         }
     }
 
-    /** Assert that all of the given points lie within the specified location relative to {@code sub}.
+    /** Assert that all the given points lie within the specified location relative to {@code sub}.
      * @param sub
      * @param loc
      * @param pts
@@ -287,7 +287,7 @@ public final class EuclideanTestUtils {
         }
     }
 
-    /** Assert that all of the given points lie within the specified location relative to {@code sub}.
+    /** Assert that all the given points lie within the specified location relative to {@code sub}.
      * @param sub
      * @param loc
      * @param pts
@@ -298,7 +298,7 @@ public final class EuclideanTestUtils {
         }
     }
 
-    /** Assert that all of the given points lie within the specified location relative to {@code sub}.
+    /** Assert that all the given points lie within the specified location relative to {@code sub}.
      * @param sub
      * @param loc
      * @param pts

@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -35,6 +35,11 @@ import org.apache.commons.geometry.euclidean.twod.LineConvexSubset;
  * </p>
  */
 public abstract class InteriorAngleLinePathConnector extends AbstractLinePathConnector {
+    /** Create an instance. */
+    public InteriorAngleLinePathConnector() {
+        // Do nothing
+    }
+
     /** {@inheritDoc} */
     @Override
     protected ConnectableLineSubset selectConnection(final ConnectableLineSubset incoming,
@@ -93,6 +98,11 @@ public abstract class InteriorAngleLinePathConnector extends AbstractLinePathCon
      * line subset.
      */
     public static final class Maximize extends InteriorAngleLinePathConnector {
+        /** Create an instance. */
+        public Maximize() {
+            // Do nothing
+        }
+
         /** {@inheritDoc} */
         @Override
         protected boolean isBetterAngle(final double newAngle, final double previousAngle) {
@@ -107,6 +117,11 @@ public abstract class InteriorAngleLinePathConnector extends AbstractLinePathCon
      * line subset.
      */
     public static final class Minimize extends InteriorAngleLinePathConnector {
+        /** Create an instance. */
+        public Minimize() {
+            // Do nothing
+        }
+
         /** {@inheritDoc} */
         @Override
         protected boolean isBetterAngle(final double newAngle, final double previousAngle) {

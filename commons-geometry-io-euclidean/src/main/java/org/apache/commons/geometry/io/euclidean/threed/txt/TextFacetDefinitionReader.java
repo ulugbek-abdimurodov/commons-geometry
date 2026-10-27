@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -20,7 +20,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.Objects;
 import org.apache.commons.geometry.euclidean.threed.Vector3D;
 import org.apache.commons.geometry.io.core.internal.GeometryIOUtils;
 import org.apache.commons.geometry.io.core.internal.SimpleTextParser;
@@ -100,7 +100,7 @@ public class TextFacetDefinitionReader implements FacetDefinitionReader {
      * @param reader reader to read characters from
      */
     public TextFacetDefinitionReader(final Reader reader) {
-        this(reader, DEFAULT_COMMENT_TOKEN);
+        this(Objects.requireNonNull(reader), DEFAULT_COMMENT_TOKEN, false);
     }
 
     /** Construct a new instance with the given reader and comment token.
@@ -109,9 +109,17 @@ public class TextFacetDefinitionReader implements FacetDefinitionReader {
      * @throws IllegalArgumentException if {@code commentToken} is non-null and contains whitespace
      */
     public TextFacetDefinitionReader(final Reader reader, final String commentToken) {
+        this(Objects.requireNonNull(reader), checkCommentToken(commentToken), false);
+    }
+
+    /** Private constructor executed after all arguments have been validated.
+     * @param reader reader to read characters from
+     * @param commentToken comment token string; set to null to disable comment parsing
+     * @param ignored Ignored parameter.
+     */
+    private TextFacetDefinitionReader(final Reader reader, final String commentToken, boolean ignored) {
         this.reader = reader;
         this.parser = new SimpleTextParser(reader);
-
         setCommentTokenInternal(commentToken);
     }
 
@@ -131,7 +139,7 @@ public class TextFacetDefinitionReader implements FacetDefinitionReader {
      * @throws IllegalArgumentException if the argument is non-null and contains whitespace
      */
     public void setCommentToken(final String commentToken) {
-        setCommentTokenInternal(commentToken);
+        setCommentTokenInternal(checkCommentToken(commentToken));
     }
 
     /** {@inheritDoc} */
@@ -158,7 +166,7 @@ public class TextFacetDefinitionReader implements FacetDefinitionReader {
 
     /** Internal method to read a facet definition starting from the current parser
      * position. Empty lines (including lines containing only comments) are discarded.
-     * @return facet definition or null if the end of input is reached
+     * @return facet definition or {@code null} if the end of input is reached
      * @throws IllegalStateException if a data format error occurs
      * @throws java.io.UncheckedIOException if an I/O error occurs
      */
@@ -265,16 +273,26 @@ public class TextFacetDefinitionReader implements FacetDefinitionReader {
      * @throws IllegalArgumentException if the argument is non-null and contains whitespace
      */
     private void setCommentTokenInternal(final String commentTokenStr) {
+        this.commentToken = commentTokenStr;
+        this.hasCommentToken = commentTokenStr != null && !commentTokenStr.isEmpty();
+        this.commentStartChar = this.hasCommentToken ?
+                commentTokenStr.charAt(0) :
+                -1;
+    }
+
+    /**
+     * Check comment token.
+     *
+     * @param commentTokenStr the comment token
+     * @return the comment token
+     * @throws IllegalArgumentException if the argument is non-null and contains whitespace
+     */
+    private static String checkCommentToken(final String commentTokenStr) {
         if (commentTokenStr != null && containsWhitespace(commentTokenStr)) {
             throw new IllegalArgumentException("Comment token cannot contain whitespace; was [" +
                     commentTokenStr + "]");
         }
-
-        this.commentToken = commentTokenStr;
-        this.hasCommentToken = commentTokenStr != null && commentTokenStr.length() > 0;
-        this.commentStartChar = this.hasCommentToken ?
-                commentTokenStr.charAt(0) :
-                -1;
+        return commentTokenStr;
     }
 
     /** Return true if the given character is considered as part of a data token

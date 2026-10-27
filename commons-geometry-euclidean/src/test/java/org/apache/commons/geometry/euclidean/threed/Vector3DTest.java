@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -32,6 +32,9 @@ import org.apache.commons.rng.UniformRandomProvider;
 import org.apache.commons.rng.simple.RandomSource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class Vector3DTest {
 
@@ -756,7 +759,7 @@ class Vector3DTest {
     @Test
     void testDotProduct_nearlyOrthogonal() {
         // the following two vectors are nearly but not exactly orthogonal
-        // naive dot product (i.e. computing u1.x * u2.x + u1.y * u2.y + u1.z * u2.z
+        // naive dot product (i.e. computing u1.x * u2.x + u1.y * u2.y + u1.z * u2.z)
         // leads to a result of 0.0, instead of the correct -1.855129...
 
         // arrange
@@ -1092,7 +1095,7 @@ class Vector3DTest {
         final Vector3D w = Vector3D.of(1, 1, 1);
 
         // act/assert
-        Assertions.assertTrue(u.hashCode() != v.hashCode());
+        Assertions.assertNotEquals(u.hashCode(), v.hashCode());
         Assertions.assertEquals(u.hashCode(), w.hashCode());
 
         Assertions.assertEquals(Vector3D.of(0, 0, Double.NaN).hashCode(), Vector3D.NaN.hashCode());
@@ -1137,13 +1140,49 @@ class Vector3DTest {
         final Vector3D d = Vector3D.of(-0.0, 0.0, -0.0);
 
         // act/assert
-        Assertions.assertFalse(a.equals(b));
+        Assertions.assertNotEquals(a, b);
 
-        Assertions.assertTrue(a.equals(c));
+        Assertions.assertEquals(a, c);
         Assertions.assertEquals(a.hashCode(), c.hashCode());
 
-        Assertions.assertTrue(b.equals(d));
+        Assertions.assertEquals(b, d);
         Assertions.assertEquals(b.hashCode(), d.hashCode());
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {1.23, 4.56, 42, Math.PI})
+    void testHashCodeCollisions_symmetricAboutZero(double any) {
+        testHashCodeCollisions_symmetricAboutArbitraryValue(any, 0.0);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "1.23, 0.5",
+        "4.56, 0.25",
+        "42, -16",
+        "3.141592, -9.87",
+    })
+    void testHashCodeCollisions_symmetricAboutArbitraryValue(double any, double arb) {
+        final double neg = -any;
+        final double pos = +any;
+
+        final Vector3D negX = Vector3D.of(neg, arb, arb);
+        final Vector3D posX = Vector3D.of(pos, arb, arb);
+        final Vector3D negY = Vector3D.of(arb, neg, arb);
+        final Vector3D posY = Vector3D.of(arb, pos, arb);
+        final Vector3D negZ = Vector3D.of(arb, arb, neg);
+        final Vector3D posZ = Vector3D.of(arb, arb, pos);
+
+        int xNegHash = negX.hashCode();
+        int xPosHash = posX.hashCode();
+        int yNegHash = negY.hashCode();
+        int yPosHash = posY.hashCode();
+        int zNegHash = negZ.hashCode();
+        int zPosHash = posZ.hashCode();
+
+        Assertions.assertNotEquals(xNegHash, xPosHash, "+/- x hash");
+        Assertions.assertNotEquals(yNegHash, yPosHash, "+/- y hash");
+        Assertions.assertNotEquals(zNegHash, zPosHash, "+/- z hash");
     }
 
     @Test

@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -41,6 +41,11 @@ public abstract class AbstractBSPTreeMergeOperator<P extends Point<P>, N extends
      * in this tree is overwritten.
      */
     private AbstractBSPTree<P, N> outputTree;
+
+    /** Create an instance. */
+    public AbstractBSPTreeMergeOperator() {
+        // Do nothing
+    }
 
     /** Set the tree used as output for this instance.
      * @param outputTree the tree used as output for this instance

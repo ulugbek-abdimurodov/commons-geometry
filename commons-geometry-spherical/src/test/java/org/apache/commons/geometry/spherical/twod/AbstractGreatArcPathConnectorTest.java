@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -291,7 +291,7 @@ class AbstractGreatArcPathConnectorTest {
         // act/assert
         Assertions.assertEquals(a, a);
 
-        Assertions.assertFalse(a.equals(null));
+        Assertions.assertNotEquals(a, null);
         Assertions.assertFalse(a.equals(new Object()));
 
         Assertions.assertNotEquals(a, new ConnectableGreatArc(arcB));
@@ -330,7 +330,7 @@ class AbstractGreatArcPathConnectorTest {
         }
     }
 
-    private static class TestConnector extends AbstractGreatArcConnector {
+    private static final class TestConnector extends AbstractGreatArcConnector {
 
         @Override
         protected ConnectableGreatArc selectConnection(final ConnectableGreatArc incoming,

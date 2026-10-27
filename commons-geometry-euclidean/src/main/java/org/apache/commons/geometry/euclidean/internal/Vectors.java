@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -77,7 +77,7 @@ public final class Vectors {
      * or length and is defined as the square root of the sum of the squares of all vector components.
      * @param x vector component
      * @return L<sub>2</sub> norm for the vector with the given components
-     * @see <a href="http://mathworld.wolfram.com/L2-Norm.html">L2 Norm</a>
+     * @see <a href="https://mathworld.wolfram.com/L2-Norm.html">L2 Norm</a>
      */
     public static double norm(final double x) {
         return Math.abs(x);
@@ -89,7 +89,7 @@ public final class Vectors {
      * @param x1 first vector component
      * @param x2 second vector component
      * @return L<sub>2</sub> norm for the vector with the given components
-     * @see <a href="http://mathworld.wolfram.com/L2-Norm.html">L2 Norm</a>
+     * @see <a href="https://mathworld.wolfram.com/L2-Norm.html">L2 Norm</a>
      */
     public static double norm(final double x1, final double x2) {
         return Math.hypot(x1, x2);
@@ -102,7 +102,7 @@ public final class Vectors {
      * @param x2 second vector component
      * @param x3 third vector component
      * @return L<sub>2</sub> norm for the vector with the given components
-     * @see <a href="http://mathworld.wolfram.com/L2-Norm.html">L2 Norm</a>
+     * @see <a href="https://mathworld.wolfram.com/L2-Norm.html">L2 Norm</a>
      */
     public static double norm(final double x1, final double x2, final double x3) {
         return Norm.EUCLIDEAN.of(x1, x2, x3);
@@ -148,7 +148,7 @@ public final class Vectors {
      * @param a1 first factor of the first term
      * @param b1 second factor of the first term
      * @param a2 first factor of the second term
-     * @param b2 second factor of the seconf term
+     * @param b2 second factor of the second term
      * @return linear combination.
      * @see Sum
      */
@@ -163,7 +163,7 @@ public final class Vectors {
      * @param a1 first factor of the first term
      * @param b1 second factor of the first term
      * @param a2 first factor of the second term
-     * @param b2 second factor of the seconf term
+     * @param b2 second factor of the second term
      * @param a3 first factor of the third term
      * @param b3 second factor of the third term
      * @return linear combination.

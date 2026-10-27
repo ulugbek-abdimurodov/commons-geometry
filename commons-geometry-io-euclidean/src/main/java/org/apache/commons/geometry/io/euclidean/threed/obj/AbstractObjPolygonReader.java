@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -68,8 +68,8 @@ public abstract class AbstractObjPolygonReader implements Closeable {
         GeometryIOUtils.closeUnchecked(reader);
     }
 
-    /** Return the next face from the OBJ content or null if no face is found.
-     * @return the next face from the OBJ content or null if no face is found
+    /** Return the next face from the OBJ content or {@code null} if no face is found.
+     * @return the next face from the OBJ content or {@code null} if no face is found
      * @throws IllegalStateException if a parsing error occurs
      * @throws java.io.UncheckedIOException if an I/O error occurs
      */

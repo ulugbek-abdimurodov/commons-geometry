@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -76,7 +76,7 @@ class TextStlWriterTest {
 
             // act/assert
             GeometryTestUtils.assertThrowsWithMessage(
-                    () -> writer.startSolid(),
+                    writer::startSolid,
                     IllegalStateException.class, "Cannot start solid definition: a solid is already being written");
         }
     }
@@ -87,7 +87,7 @@ class TextStlWriterTest {
         try (TextStlWriter writer = new TextStlWriter(out)) {
             // act/assert
             GeometryTestUtils.assertThrowsWithMessage(
-                    () -> writer.endSolid(),
+                    writer::endSolid,
                     IllegalStateException.class, "Cannot end solid definition: no solid has been started");
         }
     }

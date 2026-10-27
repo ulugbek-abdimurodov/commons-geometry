@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -54,8 +54,8 @@ public final class GreatArc extends GreatCircleSubset implements HyperplaneConve
         this.interval = interval;
     }
 
-    /** Return the start point of the arc, or null if the arc represents the full space.
-     * @return the start point of the arc, or null if the arc represents the full space.
+    /** Return the start point of the arc, or {@code null} if the arc represents the full space.
+     * @return the start point of the arc, or {@code null} if the arc represents the full space.
      */
     public Point2S getStartPoint() {
         if (!interval.isFull()) {
@@ -65,8 +65,8 @@ public final class GreatArc extends GreatCircleSubset implements HyperplaneConve
         return null;
     }
 
-    /** Return the end point of the arc, or null if the arc represents the full space.
-     * @return the end point of the arc, or null if the arc represents the full space.
+    /** Return the end point of the arc, or {@code null} if the arc represents the full space.
+     * @return the end point of the arc, or {@code null} if the arc represents the full space.
      */
     public Point2S getEndPoint() {
         if (!interval.isFull()) {
@@ -76,8 +76,8 @@ public final class GreatArc extends GreatCircleSubset implements HyperplaneConve
         return null;
     }
 
-    /** Return the midpoint of the arc, or null if the arc represents the full space.
-     * @return the midpoint of the arc, or null if the arc represents the full space.
+    /** Return the midpoint of the arc, or {@code null} if the arc represents the full space.
+     * @return the midpoint of the arc, or {@code null} if the arc represents the full space.
      */
     public Point2S getMidPoint() {
         if (!interval.isFull()) {
@@ -174,7 +174,7 @@ public final class GreatArc extends GreatCircleSubset implements HyperplaneConve
      */
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder(256);
         sb.append(this.getClass().getSimpleName()).append('[');
 
         if (isFull()) {

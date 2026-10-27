@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -34,7 +34,7 @@ import org.apache.commons.geometry.euclidean.twod.Vector2D;
 import org.apache.commons.numbers.angle.Angle;
 import org.apache.commons.numbers.core.Precision;
 
-/** Class representing a circle in 2 dimensional Euclidean space.
+/** Class representing a circle in 2-dimensional Euclidean space.
  */
 public final class Circle extends AbstractNSphere<Vector2D> implements Linecastable2D {
 
@@ -85,7 +85,7 @@ public final class Circle extends AbstractNSphere<Vector2D> implements Linecasta
      * @throws IllegalArgumentException if {@code segments} is less than 3
      */
     public RegionBSPTree2D toTree(final int segments) {
-        return new CircleApproximationBuilder(this, segments).build();
+        return CircleApproximationBuilder.create(this, segments).build();
     }
 
     /** Get the intersections of the given line with this circle. The returned list will
@@ -108,7 +108,7 @@ public final class Circle extends AbstractNSphere<Vector2D> implements Linecasta
         return intersections(line, Line::abscissa, Line::distance);
     }
 
-    /** Get the first intersection point between the given line and this circle, or null
+    /** Get the first intersection point between the given line and this circle, or {@code null}
      * if no such point exists. The "first" intersection point is the first such point
      * encountered when traveling in the direction of the line from infinity.
      * @param line line to intersect with the circle
@@ -148,7 +148,7 @@ public final class Circle extends AbstractNSphere<Vector2D> implements Linecasta
     /** Construct a circle from a center point and radius.
      * @param center the center point of the circle
      * @param radius the circle radius
-     * @param precision precision precision context used to compare floating point numbers
+     * @param precision precision context used to compare floating point numbers
      * @return a circle with the given center and radius
      * @throws IllegalArgumentException if center is not finite or radius is not finite or is
      *      less than or equal to zero as evaluated by the given precision context
@@ -160,7 +160,7 @@ public final class Circle extends AbstractNSphere<Vector2D> implements Linecasta
     /** Class used to build BSP tree circle approximations. Structural BSP tree cuts are
      * used to help balance the tree and improve performance.
      */
-    private static class CircleApproximationBuilder {
+    private static final class CircleApproximationBuilder {
 
         /** The minimum number of segments required to create a circle approximation.
          */
@@ -183,19 +183,26 @@ public final class Circle extends AbstractNSphere<Vector2D> implements Linecasta
         /** Create a new instance for approximating the given circle.
          * @param circle circle to approximate
          * @param segments number of boundary segments in the approximation
+         */
+        private CircleApproximationBuilder(final Circle circle, final int segments) {
+            this.circle = circle;
+            this.segments = segments;
+            this.angleDelta = Angle.TWO_PI / segments;
+        }
+
+        /** Create a new instance for approximating the given circle.
+         * @param circle circle to approximate
+         * @param segments number of boundary segments in the approximation
+         * @return the instance
          * @throws IllegalArgumentException if {@code segments} is less than 3
          */
-        CircleApproximationBuilder(final Circle circle, final int segments) {
+        static CircleApproximationBuilder create(final Circle circle, final int segments) {
             if (segments < MIN_SEGMENTS) {
                 throw new IllegalArgumentException(MessageFormat.format(
                         "Circle approximation segment number must be greater than or equal to {0}; was {1}",
                         MIN_SEGMENTS, segments));
             }
-
-            this.circle = circle;
-
-            this.segments = segments;
-            this.angleDelta = Angle.TWO_PI / segments;
+            return new CircleApproximationBuilder(circle, segments);
         }
 
         /** Build the BSP tree circle approximation.

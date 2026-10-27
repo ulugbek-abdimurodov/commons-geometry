@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -43,7 +43,7 @@ public interface PointMap<P extends Point<P>, V> extends Map<P, V> {
      * the {@link Entry#setValue(Object)} method to modify the
      * mapping.
      * @param pt point to fetch the map entry for
-     * @return map entry for the given point or null if no such entry
+     * @return map entry for the given point or {@code null} if no such entry
      *      exists
      */
     Entry<P, V> getEntry(P pt);

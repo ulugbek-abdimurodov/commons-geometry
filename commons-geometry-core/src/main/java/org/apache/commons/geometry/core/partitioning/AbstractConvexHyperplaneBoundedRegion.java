@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -123,9 +123,9 @@ public abstract class AbstractConvexHyperplaneBoundedRegion<P extends Point<P>, 
     }
 
     /** Trim the given hyperplane subset to the portion contained inside this instance.
-     * @param sub hyperplane subset to trim. Null is returned if the subset does not intersect the instance.
+     * @param sub hyperplane subset to trim. {@code null} is returned if the subset does not intersect the instance.
      * @return portion of the argument that lies entirely inside the region represented by
-     *      this instance, or null if it does not intersect.
+     *      this instance, or {@code null} if it does not intersect.
      */
     public HyperplaneConvexSubset<P> trim(final HyperplaneConvexSubset<P> sub) {
         HyperplaneConvexSubset<P> remaining = sub;
@@ -179,7 +179,7 @@ public abstract class AbstractConvexHyperplaneBoundedRegion<P extends Point<P>, 
 
         final boolean reverseDirection = swapsInsideOutside(transform);
 
-        // transform all of the segments
+        // transform all the segments
         if (reverseDirection) {
             tBoundary = tBoundary.reverse();
         }
@@ -322,7 +322,7 @@ public abstract class AbstractConvexHyperplaneBoundedRegion<P extends Point<P>, 
      *  <li>If no boundaries match the above conditions, then the sizes of the split boundaries are compared. If
      *      the sum of the sizes of the boundaries on the minus side is greater than the sum of the sizes of
      *      the boundaries on the plus size, then {@link SplitLocation#MINUS MINUS} is returned. Otherwise,
-     *      {@link SplitLocation#PLUS PLUS} is returned.
+     *      {@link SplitLocation#PLUS PLUS} is returned.</li>
      * </ol>
      * @param splitter splitter to classify the region against; the splitter is assumed to lie
      *      completely outside of the region
@@ -435,12 +435,12 @@ public abstract class AbstractConvexHyperplaneBoundedRegion<P extends Point<P>, 
             return boundaries;
         }
 
-        /** Split the given bounding hyperplane by all of the other hyperplanes in the given collection, returning the
+        /** Split the given bounding hyperplane by all the other hyperplanes in the given collection, returning the
          * remaining hyperplane subset.
          * @param currentBound the bound to split; this value is assumed to have come from {@code bounds}
          * @param bounds collection of bounds to use to split {@code currentBound}
          * @param currentBoundIdx the index of {@code currentBound} in {@code bounds}
-         * @return the part of {@code currentBound}'s hyperplane subset that lies on the minus side of all of the
+         * @return the part of {@code currentBound}'s hyperplane subset that lies on the minus side of all the
          *      splitting hyperplanes
          * @throws IllegalArgumentException if the hyperplanes do not form a convex region
          */

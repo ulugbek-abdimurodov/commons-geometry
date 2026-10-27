@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -21,7 +21,7 @@ import org.apache.commons.geometry.core.partitioning.EmbeddingHyperplane;
 import org.apache.commons.geometry.core.partitioning.Hyperplane;
 import org.apache.commons.geometry.core.partitioning.HyperplaneLocation;
 
-/** Class representing a line in two dimensional Euclidean space. This
+/** Class representing a line in two-dimensional Euclidean space. This
  * class should only be used for testing purposes.
  */
 public final class TestLine implements EmbeddingHyperplane<TestPoint2D, TestPoint1D> {
@@ -213,7 +213,7 @@ public final class TestLine implements EmbeddingHyperplane<TestPoint2D, TestPoin
     /** Get the intersection point of the instance and another line.
      * @param other other line
      * @return intersection point of the instance and the other line
-     *      or null if there is no unique intersection point (ie, the lines
+     *      or {@code null} if there is no unique intersection point (ie, the lines
      *      are parallel or coincident)
      */
     public TestPoint2D intersection(final TestLine other) {

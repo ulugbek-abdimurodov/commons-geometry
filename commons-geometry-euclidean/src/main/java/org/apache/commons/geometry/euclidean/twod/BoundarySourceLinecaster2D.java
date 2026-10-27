@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -75,7 +75,7 @@ final class BoundarySourceLinecaster2D implements Linecastable2D {
      * returned if no intersection is discovered.
      * @param boundary boundary from the boundary source
      * @param subset line subset to intersect with
-     * @return the linecast intersection between the two arguments or null if there is no such
+     * @return the linecast intersection between the two arguments or {@code null} if there is no such
      *      intersection
      */
     private LinecastPoint2D computeIntersection(final LineConvexSubset boundary, final LineConvexSubset subset) {

@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -178,7 +178,7 @@ final class PointMap1DImpl<V>
         /** Get a {@link DistancedValue} instance containing the next entry from the given
          * iterator.
          * @param it iterator to get the next value from
-         * @return distanced value containing the next entry from the iterator or null if the iterator
+         * @return distanced value containing the next entry from the iterator or {@code null} if the iterator
          *      does not contain any more elements
          */
         private DistancedValue<Entry<Vector1D, V>> getNextEntry(final Iterator<Entry<Vector1D, V>> it) {

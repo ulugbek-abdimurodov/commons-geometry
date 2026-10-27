@@ -15,11 +15,12 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<project name="Geometry">
-  <bannerRight>
-    <name>Apache Commons Geometry</name>
-    <src>/images/commons_geometry.small.png</src>
-    <href>/index.html</href>
+<site name="Geometry"
+  xmlns="http://maven.apache.org/SITE/2.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SITE/2.0.0 https://maven.apache.org/xsd/site-2.0.0.xsd">
+  <bannerRight name="Apache Commons Geometry" href="/index.html">
+    <image src="/images/commons_geometry.small.png"/>
   </bannerRight>
 
   <skin>
@@ -31,8 +32,7 @@
   <body>
     <!-- Custom <head> tag with injected XHTML is supported. -->
     <head>
-      <![CDATA[<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>]]>
+      <![CDATA[<script id="MathJax-script" async src="https://commons.apache.org/js/mathjax/tex-mml-chtml.js"></script>]]>
 
      <!--
         Workaround to get styles for inline code elements. The current version
@@ -84,17 +84,6 @@
   </body>
 
   <custom>
-    <!-- Escaping with CDATA is not required. -->
-    <footer>
-      <div class="center">
-        Apache Commons, Apache @project.name@, Apache, the Apache feather
-        logo, and the Apache Commons project logos are trademarks of The Apache
-        Software Foundation.
-        All other marks mentioned may be trademarks or registered
-        trademarks of their respective owners.
-      </div>
-    </footer>
-
     <!-- Custom properties controlling the commons-skin template. -->
     <commonsSkin>
       <!--
@@ -110,4 +99,4 @@
     </commonsSkin>
   </custom>
 
-</project>
+</site>

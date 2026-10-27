@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -637,23 +637,6 @@ class IntervalTest {
         // arrange
         final Interval interval = Interval.full();
         final OrientedPoint splitter = OrientedPoints.fromPointAndDirection(
-                Vector1D.of(1), true, TEST_PRECISION);
-
-        // act
-        final Split<Interval> split = interval.split(splitter);
-
-        // assert
-        Assertions.assertEquals(SplitLocation.BOTH, split.getLocation());
-
-        checkInterval(split.getMinus(), Double.NEGATIVE_INFINITY, 1);
-        checkInterval(split.getPlus(), 1, Double.POSITIVE_INFINITY);
-    }
-
-    @Test
-    void testSplit_halfSpace_positiveFacingSplitter() {
-        // arrange
-        final Interval interval = Interval.min(-1, TEST_PRECISION);
-        final OrientedPoint splitter = OrientedPoints.fromPointAndDirection(
                 Vector1D.of(1), false, TEST_PRECISION);
 
         // act
@@ -663,7 +646,24 @@ class IntervalTest {
         Assertions.assertEquals(SplitLocation.BOTH, split.getLocation());
 
         checkInterval(split.getMinus(), 1, Double.POSITIVE_INFINITY);
-        checkInterval(split.getPlus(), -1, 1);
+        checkInterval(split.getPlus(), Double.NEGATIVE_INFINITY, 1);
+    }
+
+    @Test
+    void testSplit_halfSpace_positiveFacingSplitter() {
+        // arrange
+        final Interval interval = Interval.min(-1, TEST_PRECISION);
+        final OrientedPoint splitter = OrientedPoints.fromPointAndDirection(
+                Vector1D.of(1), true, TEST_PRECISION);
+
+        // act
+        final Split<Interval> split = interval.split(splitter);
+
+        // assert
+        Assertions.assertEquals(SplitLocation.BOTH, split.getLocation());
+
+        checkInterval(split.getMinus(), -1, 1);
+        checkInterval(split.getPlus(), 1, Double.POSITIVE_INFINITY);
     }
 
 
@@ -870,16 +870,6 @@ class IntervalTest {
      * @param max
      */
     private static void checkInterval(final Interval interval, final double min, final double max) {
-        checkInterval(interval, min, max, TEST_PRECISION);
-    }
-
-    /** Check that the given interval matches the arguments and is internally consistent.
-     * @param interval
-     * @param min
-     * @param max
-     * @param precision
-     */
-    private static void checkInterval(final Interval interval, final double min, final double max, final Precision.DoubleEquivalence precision) {
         Assertions.assertEquals(min, interval.getMin(), TEST_EPS);
         Assertions.assertEquals(max, interval.getMax(), TEST_EPS);
 

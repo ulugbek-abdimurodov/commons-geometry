@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -344,10 +344,10 @@ class RegionBSPTree2STest {
     void testToConvex_doubleLune_complement() {
         // arrange
         final RegionBSPTree2S tree = GreatArcPath.builder(TEST_PRECISION)
-                .append(EQUATOR.arc(0,  Math.PI))
-                .append(X_MERIDIAN.arc(Math.PI, 0))
-                .append(EQUATOR.reverse().arc(0, Math.PI))
-                .append(X_MERIDIAN.reverse().arc(Math.PI, 0))
+                .append(EQUATOR.arc(Math.PI, 0))
+                .append(X_MERIDIAN.arc(0, Math.PI))
+                .append(EQUATOR.reverse().arc(Math.PI, 0))
+                .append(X_MERIDIAN.reverse().arc(0, Math.PI))
                 .build()
                 .toTree();
 
@@ -642,8 +642,8 @@ class RegionBSPTree2STest {
         // assert
         // compute the area, adjusting the first computation for the fact that the triangles comprising the
         // outer diamond have lengths greater than pi/2
-        final double nonComplementedArea = 4 * ((Math.PI - rightTriangleArea(outerRadius, outerRadius) -
-                rightTriangleArea(midRadius, midRadius) + rightTriangleArea(innerRadius, innerRadius)));
+        final double nonComplementedArea = 4 * (Math.PI - rightTriangleArea(outerRadius, outerRadius) -
+                rightTriangleArea(midRadius, midRadius) + rightTriangleArea(innerRadius, innerRadius));
         final double area = (4 * Math.PI) - nonComplementedArea;
         Assertions.assertEquals(area, tree.getSize(), TEST_EPS);
 
@@ -940,7 +940,7 @@ class RegionBSPTree2STest {
         final Point2S center = Point2S.of(1.0, 1.0);
         final int numPts = 200;
 
-        // boundary size is independent from winding
+        // boundary size is independent of winding
         final double boundary = Angle.TWO_PI * Math.sin(radius);
 
         final RegionBSPTree2S ccw = circleToPolygon(center, radius, numPts, false, TEST_PRECISION);

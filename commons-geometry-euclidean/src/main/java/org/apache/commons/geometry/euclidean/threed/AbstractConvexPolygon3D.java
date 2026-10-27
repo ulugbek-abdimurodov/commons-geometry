@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -71,7 +71,7 @@ abstract class AbstractConvexPolygon3D extends AbstractPlaneSubset implements Co
     /** {@inheritDoc} */
     @Override
     public double getSize() {
-        // see http://geomalgorithms.com/a01-_area.html#3D-Planar-Polygons
+        // see https://geomalgorithms.com/a01-_area.html#3D-Planar-Polygons
         final List<Vector3D> vertices = getVertices();
 
         double crossSumX = 0.0;
@@ -251,7 +251,7 @@ abstract class AbstractConvexPolygon3D extends AbstractPlaneSubset implements Co
 
             cmp = precision.compare(offset, 0.0);
             if (cmp >= 0) {
-                // the point is on directly on the boundary or on its plus side; project the point onto the
+                // the point is directly on the boundary or on its plus side; project the point onto the
                 // boundary, taking care to restrict the point to the actual extent of the boundary,
                 // and select the point with the shortest distance
                 boundaryVec = testVec.subtract(offsetVec);
@@ -393,7 +393,7 @@ abstract class AbstractConvexPolygon3D extends AbstractPlaneSubset implements Co
      * @param exitIdx the index of the vertex from {@code vertices} immediately before the polygon transitioned
      *      to being fully exited from this side of the split result. If no point from {@code vertices} lay
      *      directly on the splitting plane while exiting this side and a new vertex had to be computed for the
-     *      split result, then this index will be the last vertex on the this side of the split. If a vertex did
+     *      split result, then this index will be the last vertex on this side of the split. If a vertex did
      *      lie directly on the splitting plane, then this index will point to that vertex.
      * @param newExitPt the newly-computed point to be added as the last vertex in the split result; may
      *      be null if no such point exists
@@ -438,7 +438,7 @@ abstract class AbstractConvexPolygon3D extends AbstractPlaneSubset implements Co
     /** {@inheritDoc} */
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder(256);
         sb.append(getClass().getSimpleName())
             .append("[normal= ")
             .append(getPlane().getNormal())

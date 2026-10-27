@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -52,9 +52,14 @@ public class BoundaryIOManager3D extends BoundaryIOManager<
         BoundaryReadHandler3D,
         BoundaryWriteHandler3D> {
 
+    /** Create an instance. */
+    public BoundaryIOManager3D() {
+        // Do nothing
+    }
+
     /** Get a {@link FacetDefinitionReader} for reading facet information from the given input.
      * @param in input to read facets from
-     * @param fmt format of the input; if null, the format is determined implicitly from the
+     * @param fmt format of the input; if {@code null}, the format is determined implicitly from the
      *      file extension of the input {@link GeometryInput#getFileName() file name}
      * @return facet definition reader
      * @throws IllegalArgumentException if no read handler can be found for the input format
@@ -79,7 +84,7 @@ public class BoundaryIOManager3D extends BoundaryIOManager<
      *  <li>{@link java.io.UncheckedIOException UncheckedIOException} if an I/O error occurs</li>
      * </ul>
      * @param in input to read from
-     * @param fmt format of the input; if null, the format is determined implicitly from the
+     * @param fmt format of the input; if {@code null}, the format is determined implicitly from the
      *      file extension of the input {@link GeometryInput#getFileName() file name}
      * @return stream providing access to the facets in the input
      * @throws IllegalArgumentException if no read handler can be found for the input format
@@ -105,7 +110,7 @@ public class BoundaryIOManager3D extends BoundaryIOManager<
      *  <li>{@link java.io.UncheckedIOException UncheckedIOException} if an I/O error occurs</li>
      * </ul>
      * @param in input to read from
-     * @param fmt format of the input; if null, the format is determined implicitly from the
+     * @param fmt format of the input; if {@code null}, the format is determined implicitly from the
      *      file extension of the input {@link GeometryInput#getFileName() file name}
      * @param precision precision context used for floating point comparisons
      * @return stream providing access to the triangles in the input
@@ -121,7 +126,7 @@ public class BoundaryIOManager3D extends BoundaryIOManager<
 
     /** Return a {@link TriangleMesh} containing all triangles from the given input.
      * @param in input to read from
-     * @param fmt format of the input; if null, the format is determined implicitly from the
+     * @param fmt format of the input; if {@code null}, the format is determined implicitly from the
      *      file extension of the input {@link GeometryInput#getFileName() file name}
      * @param precision precision context used for floating point comparisons
      * @return mesh containing all triangles from the input
@@ -142,7 +147,7 @@ public class BoundaryIOManager3D extends BoundaryIOManager<
      * try-with-resources statement outside of this method.</p>
      * @param boundaries stream containing boundaries to write
      * @param out output to write to
-     * @param fmt format of the output; if null, the format is determined implicitly from the
+     * @param fmt format of the output; if {@code null}, the format is determined implicitly from the
      *      file extension of the output {@link GeometryOutput#getFileName() file name}
      * @throws IllegalArgumentException if no write handler can be found for the output format
      * @throws java.io.UncheckedIOException if an I/O error occurs
@@ -159,7 +164,7 @@ public class BoundaryIOManager3D extends BoundaryIOManager<
      * try-with-resources statement outside of this method.</p>
      * @param facets stream containing facets to write
      * @param out output to write to
-     * @param fmt format of the output; if null, the format is determined implicitly from the
+     * @param fmt format of the output; if {@code null}, the format is determined implicitly from the
      *      file extension of the output {@link GeometryOutput#getFileName() file name}
      * @throws IllegalArgumentException if no write handler can be found for the output format
      * @throws java.io.UncheckedIOException if an I/O error occurs
@@ -172,7 +177,7 @@ public class BoundaryIOManager3D extends BoundaryIOManager<
     /** Write the given facets to the output.
      * @param facets facets to write
      * @param out output to write to
-     * @param fmt format of the output; if null, the format is determined implicitly from the
+     * @param fmt format of the output; if {@code null}, the format is determined implicitly from the
      *      file extension of the output {@link GeometryOutput#getFileName() file name}
      * @throws IllegalArgumentException if no write handler can be found for the output format
      * @throws java.io.UncheckedIOException if an I/O error occurs

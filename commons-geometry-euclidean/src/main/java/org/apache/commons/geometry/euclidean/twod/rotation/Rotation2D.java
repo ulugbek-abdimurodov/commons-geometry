@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -21,7 +21,7 @@ import org.apache.commons.geometry.euclidean.internal.Vectors;
 import org.apache.commons.geometry.euclidean.twod.AffineTransformMatrix2D;
 import org.apache.commons.geometry.euclidean.twod.Vector2D;
 
-/** Class representing a rotation in 2 dimensional Euclidean space. Positive
+/** Class representing a rotation in 2-dimensional Euclidean space. Positive
  * rotations are in a <em>counter-clockwise</em> direction.
  */
 public final class Rotation2D implements EuclideanTransform<Vector2D> {

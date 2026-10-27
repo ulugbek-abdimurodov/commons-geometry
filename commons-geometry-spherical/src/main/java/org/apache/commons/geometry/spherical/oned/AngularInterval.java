@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -58,7 +58,7 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
      * @param minBoundary minimum boundary for the interval
      * @param maxBoundary maximum boundary for the interval
      */
-    private AngularInterval(final CutAngle minBoundary, final CutAngle maxBoundary) {
+    AngularInterval(final CutAngle minBoundary, final CutAngle maxBoundary) {
 
         this.minBoundary = minBoundary;
         this.maxBoundary = maxBoundary;
@@ -91,9 +91,9 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
                 0.0;
     }
 
-    /** Get the minimum boundary for the interval, or null if the
+    /** Get the minimum boundary for the interval, or {@code null} if the
      * interval represents the full space.
-     * @return the minimum point for the interval or null if
+     * @return the minimum point for the interval or {@code null} if
      *      the interval represents the full space
      */
     public CutAngle getMinBoundary() {
@@ -111,18 +111,18 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
                 Angle.TWO_PI;
     }
 
-    /** Get the maximum point for the interval. This will be null if the
+    /** Get the maximum point for the interval. This will be {@code null} if the
      * interval represents the full space.
-     * @return the maximum point for the interval or null if
+     * @return the maximum point for the interval or {@code null} if
      *      the interval represents the full space
      */
     public CutAngle getMaxBoundary() {
         return maxBoundary;
     }
 
-    /** Get the midpoint of the interval or null if the interval represents
+    /** Get the midpoint of the interval or {@code null} if the interval represents
      *  the full space.
-     * @return the midpoint of the interval or null if the interval represents
+     * @return the midpoint of the interval or {@code null} if the interval represents
      *      the full space
      * @see #getCentroid()
      */
@@ -219,7 +219,7 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
      * @return a new instance transformed by the argument
      */
     public AngularInterval transform(final Transform<Point1S> transform) {
-        return AngularInterval.transform(this, transform, AngularInterval::of);
+        return transform(this, transform, AngularInterval::of);
     }
 
     /** {@inheritDoc}
@@ -292,7 +292,7 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
      * given precision context.
      * @param min min azimuth value
      * @param max max azimuth value
-     * @param precision precision precision context used to compare floating point values
+     * @param precision precision context used to compare floating point values
      * @return a new instance resulting the angular region between the given min and max azimuths
      * @throws IllegalArgumentException if either azimuth is infinite or NaN
      */
@@ -308,7 +308,7 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
      * given precision context.
      * @param min min azimuth value
      * @param max max azimuth value
-     * @param precision precision precision context used to compare floating point values
+     * @param precision precision context used to compare floating point values
      * @return a new instance resulting the angular region between the given min and max points
      * @throws IllegalArgumentException if either azimuth is infinite or NaN
      */
@@ -337,7 +337,7 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
      * given precision context.
      * @param min min azimuth value
      * @param max max azimuth value
-     * @param precision precision precision context used to compare floating point values
+     * @param precision precision context used to compare floating point values
      * @param factory factory object used to create new instances; this object is passed the validated
      *      min (negative-facing) cut and the max (positive-facing) cut, in that order
      * @param <T> Angular interval implementation type
@@ -469,7 +469,7 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
          * @param maxBoundary maximum boundary for the interval
          * @throws IllegalArgumentException if the interval is not convex
          */
-        private Convex(final CutAngle minBoundary, final CutAngle maxBoundary) {
+        Convex(final CutAngle minBoundary, final CutAngle maxBoundary) {
             super(minBoundary, maxBoundary);
 
             if (!isConvex(minBoundary, maxBoundary)) {
@@ -503,8 +503,8 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
                     splitter.getPrecision());
 
             if (isFull()) {
-                final Convex minus = Convex.of(splitter, opposite);
-                final Convex plus = Convex.of(splitter.reverse(), opposite.reverse());
+                final Convex minus = of(splitter, opposite);
+                final Convex plus = of(splitter.reverse(), opposite.reverse());
 
                 return new Split<>(minus, plus);
             }
@@ -537,12 +537,12 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
                     final CutAngle posCut = positiveFacingSplit ?
                             opposite.reverse() :
                             opposite;
-                    pos = Convex.of(minBoundary, posCut);
+                    pos = of(minBoundary, posCut);
 
                     final CutAngle negCut = positiveFacingSplit ?
                             opposite :
                             opposite.reverse();
-                    neg = Convex.of(negCut, maxBoundary);
+                    neg = of(negCut, maxBoundary);
                 }
             } else if (minLoc < 0) {
                 // min is on the neg side
@@ -555,12 +555,12 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
                     final CutAngle posCut = positiveFacingSplit ?
                             splitter.reverse() :
                             splitter;
-                    pos = Convex.of(maxBoundary, posCut);
+                    pos = of(maxBoundary, posCut);
 
                     final CutAngle negCut = positiveFacingSplit ?
                             splitter :
                             splitter.reverse();
-                    neg = Convex.of(negCut, minBoundary);
+                    neg = of(negCut, minBoundary);
                 }
             } else {
                 // min is directly on the splitter; determine whether it was on the main split
@@ -588,7 +588,7 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
          * given precision context.
          * @param min min azimuth value
          * @param max max azimuth value
-         * @param precision precision precision context used to compare floating point values
+         * @param precision precision context used to compare floating point values
          * @return a new instance resulting the angular region between the given min and max azimuths
          * @throws IllegalArgumentException if either azimuth is infinite or NaN, or the given angular
          *      interval is not convex (meaning it has a size of greater than {@code pi})
@@ -604,13 +604,13 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
          * given precision context.
          * @param min min azimuth value
          * @param max max azimuth value
-         * @param precision precision precision context used to compare floating point values
+         * @param precision precision context used to compare floating point values
          * @return a new instance resulting the angular region between the given min and max points
          * @throws IllegalArgumentException if either azimuth is infinite or NaN, or the given angular
          *      interval is not convex (meaning it has a size of greater than {@code pi})
          */
         public static Convex of(final Point1S min, final Point1S max, final Precision.DoubleEquivalence precision) {
-            return createInterval(min, max, precision, Convex::new, Convex.FULL);
+            return createInterval(min, max, precision, Convex::new, FULL);
         }
 
         /** Return an instance representing the convex angular interval between the given oriented points.
@@ -624,7 +624,7 @@ public class AngularInterval implements HyperplaneBoundedRegion<Point1S> {
          *      interval is not convex (meaning it has a size of greater than {@code pi})
          */
         public static Convex of(final CutAngle a, final CutAngle b) {
-            return createInterval(a, b, Convex::new, Convex.FULL);
+            return createInterval(a, b, Convex::new, FULL);
         }
     }
 }

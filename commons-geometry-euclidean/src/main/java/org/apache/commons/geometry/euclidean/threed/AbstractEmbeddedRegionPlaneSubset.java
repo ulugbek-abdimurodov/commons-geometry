@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -104,7 +104,7 @@ abstract class AbstractEmbeddedRegionPlaneSubset extends AbstractPlaneSubset imp
     /** {@inheritDoc} */
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder(256);
         sb.append(getClass().getSimpleName())
             .append("[plane= ")
             .append(getPlane())
@@ -117,7 +117,7 @@ abstract class AbstractEmbeddedRegionPlaneSubset extends AbstractPlaneSubset imp
 
     /** Compute 3D bounds from a subspace boundary source.
      * @param src subspace boundary source
-     * @return 3D bounds from the given embedded subspace boundary source or null
+     * @return 3D bounds from the given embedded subspace boundary source or {@code null}
      *      if no valid bounds could be determined
      */
     protected Bounds3D getBoundsFromSubspace(final BoundarySource2D src) {

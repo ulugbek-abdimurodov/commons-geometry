@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
 
 import org.apache.commons.geometry.core.Point;
@@ -74,7 +75,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
 
         /** Create a new {@link BucketNode} instance.
          * @param map owning map
-         * @param parent parent node; will be null for the tree root
+         * @param parent parent node; will be {@code null} for the tree root
          * @param childIndex index of the new node in its parent child list; will be {@code -1}
          *      if the new node does not have a parent
          * @return the newly created node
@@ -286,7 +287,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
     protected abstract int disambiguatePointComparison(P a, P b);
 
     /** Construct a new node instance.
-     * @param parent parent node; will be null for the tree root
+     * @param parent parent node; will be {@code null} for the tree root
      * @param childIndex index of the node in its parent child list
      * @return the new node instance
      */
@@ -332,19 +333,19 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         return Arrays.asList(new BucketNode[nodeChildCount]);
     }
 
-    /** Get the entry for the given key or null if not found.
+    /** Get the entry for the given key or {@code null} if not found.
      * @param key key to search for
-     * @return entry for the given key or null if not found
+     * @return entry for the given key or {@code null} if not found
      */
     @SuppressWarnings("unchecked")
     private Entry<P, V> findEntry(final Object key) {
         return findEntryByPoint((P) key);
     }
 
-    /** Find the entry for the given point or null if one does not
+    /** Find the entry for the given point or {@code null} if one does not
      * exist.
      * @param pt point to find the entry for
-     * @return entry for the given point or null if one does not exist
+     * @return entry for the given point or {@code null} if one does not exist
      */
     private Entry<P, V> findEntryByPoint(final P pt) {
         Entry<P, V> entry = null;
@@ -357,10 +358,10 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         return entry;
     }
 
-    /** Remove and return the entry for the given point or null
+    /** Remove and return the entry for the given point or {@code null}
      * if no such entry exists.
      * @param pt point to remove the entry for
-     * @return the removed entry or null if not found
+     * @return the removed entry or {@code null} if not found
      */
     private Entry<P, V> removeEntryByPoint(final P pt) {
         Entry<P, V> entry = null;
@@ -402,8 +403,8 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
     }
 
     /** Get the argument with the smallest distance value.
-     * @param a first entry; may be null
-     * @param b second entry; may be null
+     * @param a first entry; may be {@code null}
+     * @param b second entry; may be {@code null}
      * @return argument with the smallest distance value
      */
     private DistancedValue<Entry<P, V>> getNearest(
@@ -415,8 +416,8 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
     }
 
     /** Get the argument with the largest distance value.
-     * @param a first entry; may be null
-     * @param b second entry; may be null
+     * @param a first entry; may be {@code null}
+     * @param b second entry; may be {@code null}
      * @return argument with the largest distance value
      */
     private DistancedValue<Entry<P, V>> getFarthest(
@@ -427,11 +428,11 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
                 b;
     }
 
-    /** Compare two entries with distance values. If either entry is null, the distance
+    /** Compare two entries with distance values. If either entry is {@code null}, the distance
      * for that entry is taken to be {@code nullDistance}.
-     * @param a first entry; may be null
-     * @param b second entry; may be null
-     * @param nullDistance distance used for null arguments
+     * @param a first entry; may be {@code null}
+     * @param b second entry; may be {@code null}
+     * @param nullDistance distance used for {@code null} arguments
      * @return integer comparison result
      */
     private int compareEntries(
@@ -441,7 +442,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         final double aDist = a != null ? a.getDistance() : nullDistance;
         final double bDist = b != null ? b.getDistance() : nullDistance;
 
-        int cmp = Double.compare(aDist, bDist);
+        final int cmp = Double.compare(aDist, bDist);
         if (cmp == 0 &&
                 a != null &&
                 b != null) {
@@ -463,8 +464,8 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
     /** Return the value for the argument or {@code null} if {@code entry}
      * is {@code null}.
      * @param <V> Value type
-     * @param entry entry to return the value for; may be null
-     * @return value for the argument or null if the argument is null
+     * @param entry entry to return the value for; may be {@code null}
+     * @return value for the argument or {@code null} if the argument is {@code null}
      */
     private static <V> V getValue(final Entry<?, V> entry) {
         return entry != null ?
@@ -489,10 +490,10 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         /** Index of this node in its parent child list. */
         private int childIndex;
 
-        /** Child nodes; elements may be null. */
+        /** Child nodes; elements may be {@code null}. */
         private List<BucketNode<P, V>> children;
 
-        /** Entries stored in the node; will be null for non-leaf nodes. */
+        /** Entries stored in the node; will be {@code null} for non-leaf nodes. */
         private List<Entry<P, V>> entries;
 
         /** Number of entries in this subtree. */
@@ -500,7 +501,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
 
         /** Construct a new instance.
          * @param map owning map
-         * @param parent parent node or null if the tree root
+         * @param parent parent node or {@code null} if the tree root
          * @param childIndex index of this node in its parent, or {@code -1}
          *      if no parent exists
          */
@@ -552,7 +553,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
 
         /** Find and return the map entry matching the given key.
          * @param key point key
-         * @return entry matching the given key or null if not found
+         * @return entry matching the given key or {@code null} if not found
          */
         public Entry<P, V> findEntry(final P key) {
             if (isLeaf()) {
@@ -573,7 +574,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         /** Find and return the map entry matching the given key in the node's children.
          * This method must only be called on internal nodes.
          * @param key point key
-         * @return entry matching the given key or null if not found
+         * @return entry matching the given key or {@code null} if not found
          */
         private Entry<P, V> findEntryInChildren(final P key) {
             final int loc = getSearchLocation(key);
@@ -588,9 +589,9 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
             return null;
         }
 
-        /** Find the first entry in the tree with the given value or null if not found.
+        /** Find the first entry in the tree with the given value or {@code null} if not found.
          * @param value value to search for
-         * @return the first entry in the tree with the given value or null if not found
+         * @return the first entry in the tree with the given value or {@code null} if not found
          */
         public Entry<P, V> findEntryByValue(final Object value) {
             if (isLeaf()) {
@@ -607,10 +608,10 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
             return findEntryByValueInChildren(value);
         }
 
-        /** Find the first entry in the child subtrees for this node with the given value or null
+        /** Find the first entry in the child subtrees for this node with the given value or {@code null}
          * if not found. This method must only be called on internal nodes.
          * @param value value to search for
-         * @return the first entry in the child subtrees with the given value or null if not found
+         * @return the first entry in the child subtrees with the given value or {@code null} if not found
          */
         private Entry<P, V> findEntryByValueInChildren(final Object value) {
             for (final BucketNode<P, V> child : children) {
@@ -657,7 +658,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
 
         /** Remove the given key, returning the previously mapped entry.
          * @param key key to remove
-         * @return the value previously mapped to the key or null if no
+         * @return the value previously mapped to the key or {@code null} if no
          *       value was mapped
          */
         public Entry<P, V> removeEntry(final P key) {
@@ -686,7 +687,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         /** Remove the given key from the node's child subtrees, returning the previously
          * mapped entry. This method must only be called on internal nodes.
          * @param key key to remove
-         * @return the value previously mapped to the key or null if no
+         * @return the value previously mapped to the key or {@code null} if no
          *       value was mapped
          */
         private Entry<P, V> removeEntryFromChildren(final P key) {
@@ -705,10 +706,10 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
             return null;
         }
 
-        /** Find the nearest entry to {@code refPt} in the subtree rooted at this node, or null if
+        /** Find the nearest entry to {@code refPt} in the subtree rooted at this node, or {@code null} if
          * the subtree is empty.
          * @param refPt reference point
-         * @return nearest entry to {@code refPt} in the subtree rooted at this node, or null if no
+         * @return nearest entry to {@code refPt} in the subtree rooted at this node, or {@code null} if no
          *      such entry exists
          */
         public DistancedValue<Entry<P, V>> findNearestEntry(final P refPt) {
@@ -716,11 +717,11 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         }
 
         /** Find the nearest entry to {@code refPt} within the maximum distance specified in the subtree
-         * rooted at this node, or null if no such entry exists.
+         * rooted at this node, or {@code null} if no such entry exists.
          * @param refPt reference point
          * @param maxDist maximum search distance
          * @return nearest entry to {@code refPt} within the maximum distance specified in the subtree
-         *      rooted at this node, or null if no such entry exists.
+         *      rooted at this node, or {@code null} if no such entry exists.
          */
         private DistancedValue<Entry<P, V>> findNearestEntry(final P refPt, final double maxDist) {
             if (isLeaf()) {
@@ -740,17 +741,17 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
                 return closest;
             }
 
-            // internal node;
+            // internal node
             return findNearestEntryInChildren(refPt, maxDist);
         }
 
         /** Find the nearest entry to {@code refPt} within the maximum distance specified in the child subtrees
-         * rooted at this node, or null if no such entry exists. This method must only be call on internal
+         * rooted at this node, or {@code null} if no such entry exists. This method must only be call on internal
          * nodes.
          * @param refPt reference point
          * @param maxDist maximum search distance
          * @return nearest entry to {@code refPt} within the maximum distance specified in the subtree
-         *      rooted at this node, or null if no such entry exists.
+         *      rooted at this node, or {@code null} if no such entry exists.
          */
         private DistancedValue<Entry<P, V>> findNearestEntryInChildren(final P refPt, final double maxDist) {
             // look through children in order of increasing minimum distance from the
@@ -786,9 +787,9 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
             return closest;
         }
 
-        /** Find the farthest entry from {@code refPt} within the subtree rooted at this node..
+        /** Find the farthest entry from {@code refPt} within the subtree rooted at this node.
          * @param refPt reference point
-         * @return farthest entry from {@code refPt} in the subtree rooted at this node, or null
+         * @return farthest entry from {@code refPt} in the subtree rooted at this node, or {@code null}
          *      if no such entry exists.
          */
         public DistancedValue<Entry<P, V>> findFarthestEntry(final P refPt) {
@@ -806,7 +807,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
 
                 return farthest;
             } else {
-                // internal node; look through children in order of decreasing maximum distance
+                // internal node; look through children in order of decreasing maximum
                 // distance from the reference point
                 final List<DistancedValue<BucketNode<P, V>>> sortedNodeList = new ArrayList<>(map.nodeChildCount);
 
@@ -1022,7 +1023,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         protected abstract double getMinChildDistance(int childIdx, P pt, int ptLoc);
 
         /** Get the maximum distance from {@code pt} to the region for the child
-         * child node at the specified index. A value of {@code Double#POSITIVE_INFINITY}
+         * node at the specified index. A value of {@code Double#POSITIVE_INFINITY}
          * should be returned if there is no maximum.
          * @param childIdx index of the child in question
          * @param pt reference point
@@ -1054,8 +1055,8 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
             entries = null;
         }
 
-        /** Get the parent node or null if one does not exist.
-         * @return parent node or null if one does not exist.
+        /** Get the parent node or {@code null} if one does not exist.
+         * @return parent node or {@code null} if one does not exist.
          */
         protected BucketNode<P, V> getParent() {
             return parent;
@@ -1068,10 +1069,10 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
             return map.precision;
         }
 
-        /** Get the given entry in the child at {@code idx} or null if not found.
+        /** Get the given entry in the child at {@code idx} or {@code null} if not found.
          * @param idx child index
          * @param key key to search for
-         * @return entry matching {@code key} in child or null if not found
+         * @return entry matching {@code key} in child or {@code null} if not found
          */
         private Entry<P, V> getEntryInChild(final int idx, final P key) {
             final BucketNode<P, V> child = children.get(idx);
@@ -1084,7 +1085,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         /** Remove the given key from the child at {@code idx}.
          * @param idx index of the child
          * @param key key to remove
-         * @return entry removed from the child or null if not found
+         * @return entry removed from the child or {@code null} if not found
          */
         private Entry<P, V> removeFromChild(final int idx, final P key) {
             final BucketNode<P, V> child = children.get(idx);
@@ -1225,6 +1226,11 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
     private final class EntrySet
         extends AbstractSet<Entry<P, V>> {
 
+        /** Create an instance. */
+        EntrySet() {
+            // Allow package level instantiation
+        }
+
         /** {@inheritDoc} */
         @SuppressWarnings("unchecked")
         @Override
@@ -1260,9 +1266,6 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
     private final class EntryIterator
         implements Iterator<Entry<P, V>> {
 
-        /** Size of the owning map. */
-        private int size;
-
         /** Iterator that produces the next entry to be returned. */
         private Iterator<Entry<P, V>> nextEntryIterator;
 
@@ -1275,8 +1278,6 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         /** Simple constructor.
          */
         EntryIterator() {
-            this.size = AbstractBucketPointMap.this.size();
-
             updateExpectedVersion();
         }
 
@@ -1315,7 +1316,6 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
 
             nextEntryIterator.remove();
             --nextIdx;
-            --size;
 
             updateExpectedVersion();
         }
@@ -1340,7 +1340,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         /** Find the next map entry iterator recursively in the subtree rooted at {@code node}.
          * @param node root of the subtree to obtain an iterator in
          * @param offset index offset of the first entry in the subtree
-         * @return the next map entry iterator or null if no leaf nodes in the subtree contain the
+         * @return the next map entry iterator or {@code null} if no leaf nodes in the subtree contain the
          *      entry at {@code nextIdx}
          */
         private Iterator<Entry<P, V>> findIteratorRecursive(final BucketNode<P, V> node, final int offset) {
@@ -1358,7 +1358,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         /** Find the next map entry iterator in the children of {@code node}.
          * @param node root of the subtree to obtain an iterator in
          * @param offset index offset of the first entry in the subtree
-         * @return the next map entry iterator or null if no leaf nodes in the subtree contain the
+         * @return the next map entry iterator or {@code null} if no leaf nodes in the subtree contain the
          *      entry at {@code nextIdx}
          */
         private Iterator<Entry<P, V>> findIteratorInNodeChildren(final BucketNode<P, V> node, final int offset) {
@@ -1368,7 +1368,7 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
             for (int i = 0; i < childCount; ++i) {
                 final BucketNode<P, V> child = node.children.get(i);
                 if (child != null) {
-                    Iterator<Entry<P, V>> childIt = findIteratorRecursive(child, currentOffset);
+                    final Iterator<Entry<P, V>> childIt = findIteratorRecursive(child, currentOffset);
                     if (childIt != null) {
                         return childIt;
                     }
@@ -1425,10 +1425,10 @@ public abstract class AbstractBucketPointMap<P extends Point<P>, V>
         private final P refPt;
 
         /** Queue of nodes remaining to be visited. */
-        private final PriorityQueue<DistancedValue<BucketNode<P, V>>> nodes;
+        private final Queue<DistancedValue<BucketNode<P, V>>> nodes;
 
         /** Queue of entries waiting to be returned. */
-        private final PriorityQueue<DistancedValue<Entry<P, V>>> entries;
+        private final Queue<DistancedValue<Entry<P, V>>> entries;
 
         /** The next entry to be returned from the iterator. */
         private Entry<P, V> nextEntry;

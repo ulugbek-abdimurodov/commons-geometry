@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -26,7 +26,7 @@ public class SimpleTupleFormat {
     private static final String DEFAULT_SEPARATOR = ",";
 
     /** Space character. */
-    private static final String SPACE = " ";
+    private static final char SPACE = ' ';
 
     /** Static instance configured with default values. Tuples in this format
      * are enclosed by parentheses and separated by commas.
@@ -37,17 +37,17 @@ public class SimpleTupleFormat {
     /** String separating tuple values. */
     private final String separator;
 
-    /** String used to signal the start of a tuple; may be null. */
+    /** String used to signal the start of a tuple; may be {@code null}. */
     private final String prefix;
 
-    /** String used to signal the end of a tuple; may be null. */
+    /** String used to signal the end of a tuple; may be {@code null}. */
     private final String suffix;
 
     /** Constructs a new instance with the default string separator (a comma)
      * and the given prefix and suffix.
-     * @param prefix String used to signal the start of a tuple; if null, no
+     * @param prefix String used to signal the start of a tuple; if {@code null}, no
      *      string is expected at the start of the tuple
-     * @param suffix String used to signal the end of a tuple; if null, no
+     * @param suffix String used to signal the end of a tuple; if {@code null}, no
      *      string is expected at the end of the tuple
      */
     public SimpleTupleFormat(final String prefix, final String suffix) {
@@ -56,9 +56,9 @@ public class SimpleTupleFormat {
 
     /** Simple constructor.
      * @param separator String used to separate tuple values; must not be null.
-     * @param prefix String used to signal the start of a tuple; if null, no
+     * @param prefix String used to signal the start of a tuple; if {@code null}, no
      *      string is expected at the start of the tuple
-     * @param suffix String used to signal the end of a tuple; if null, no
+     * @param suffix String used to signal the end of a tuple; if {@code null}, no
      *      string is expected at the end of the tuple
      */
     protected SimpleTupleFormat(final String separator, final String prefix, final String suffix) {
@@ -74,15 +74,15 @@ public class SimpleTupleFormat {
         return separator;
     }
 
-    /** Return the string used to signal the start of a tuple. This value may be null.
-     * @return the string used to begin each tuple or null
+    /** Return the string used to signal the start of a tuple. This value may be {@code null}.
+     * @return the string used to begin each tuple or {@code null}
      */
     public String getPrefix() {
         return prefix;
     }
 
-    /** Returns the string used to signal the end of a tuple. This value may be null.
-     * @return the string used to end each tuple or null
+    /** Returns the string used to signal the end of a tuple. This value may be {@code null}.
+     * @return the string used to end each tuple or {@code null}
      */
     public String getSuffix() {
         return suffix;
@@ -254,7 +254,7 @@ public class SimpleTupleFormat {
 
     /** Read the configured prefix from the current position in the given string, ignoring any preceding
      * whitespace, and advance the parsing position past the prefix sequence. An exception is thrown if the
-     * prefix is not found. Does nothing if the prefix is null.
+     * prefix is not found. Does nothing if the prefix is {@code null}.
      * @param str the string being parsed
      * @param pos the current parsing position
      * @throws IllegalArgumentException if the configured prefix is not null and is not found at the current
@@ -305,7 +305,7 @@ public class SimpleTupleFormat {
 
     /** Read the configured suffix from the current position in the given string, ignoring any preceding
      * whitespace, and advance the parsing position past the suffix sequence. An exception is thrown if the
-     * suffix is not found. Does nothing if the suffix is null.
+     * suffix is not found. Does nothing if the suffix is {@code null}.
      * @param str the string being parsed
      * @param pos the current parsing position
      * @throws IllegalArgumentException if the configured suffix is not null and is not found at the current

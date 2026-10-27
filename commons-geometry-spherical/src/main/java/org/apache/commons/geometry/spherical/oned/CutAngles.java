@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -53,7 +53,7 @@ public final class CutAngles {
     /** Create a new instance at the given azimuth, oriented so that the plus side of the hyperplane points
      * toward increasing angular values.
      * @param azimuth azimuth value in radians
-     * @param precision precision precision context used to determine floating point equality
+     * @param precision precision context used to determine floating point equality
      * @return a new instance
      */
     public static CutAngle createPositiveFacing(final double azimuth, final Precision.DoubleEquivalence precision) {
@@ -63,7 +63,7 @@ public final class CutAngles {
     /** Create a new instance at the given point, oriented so that the plus side of the hyperplane points
      * toward increasing angular values.
      * @param point point representing the location of the hyperplane
-     * @param precision precision precision context used to determine floating point equality
+     * @param precision precision context used to determine floating point equality
      * @return a new instance
      */
     public static CutAngle createPositiveFacing(final Point1S point, final Precision.DoubleEquivalence precision) {
@@ -73,7 +73,7 @@ public final class CutAngles {
     /** Create a new instance at the given azimuth, oriented so that the plus side of the hyperplane points
      * toward decreasing angular values.
      * @param azimuth azimuth value in radians
-     * @param precision precision precision context used to determine floating point equality
+     * @param precision precision context used to determine floating point equality
      * @return a new instance
      */
     public static CutAngle createNegativeFacing(final double azimuth, final Precision.DoubleEquivalence precision) {
@@ -83,7 +83,7 @@ public final class CutAngles {
     /** Create a new instance at the given point, oriented so that the plus side of the hyperplane points
      * toward decreasing angular values.
      * @param point point representing the location of the hyperplane
-     * @param precision precision precision context used to determine floating point equality
+     * @param precision precision context used to determine floating point equality
      * @return a new instance
      */
     public static CutAngle createNegativeFacing(final Point1S point, final Precision.DoubleEquivalence precision) {

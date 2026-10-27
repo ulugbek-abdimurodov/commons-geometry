@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -36,6 +36,11 @@ public class TextBoundaryWriteHandler3D extends AbstractTextBoundaryWriteHandler
 
     /** Number of vertices required per facet; will be -1 if disabled. */
     private int facetVertexCount = TextFacetDefinitionWriter.DEFAULT_FACET_VERTEX_COUNT;
+
+    /** Create an instance. */
+    public TextBoundaryWriteHandler3D() {
+        // Do nothing
+    }
 
     /** Get the string used to separate vertex components (ie, individual x, y, z values).
      * @return string used to separate vertex components
@@ -71,7 +76,7 @@ public class TextBoundaryWriteHandler3D extends AbstractTextBoundaryWriteHandler
 
     /** Get the number of vertices required per facet or {@code -1} if no specific
      * number is required.
-     * @return the number of vertices required per facet or {@code -1} if any geometricallly
+     * @return the number of vertices required per facet or {@code -1} if any geometrically
      *      valid number is allowed (ie, any number greater than or equal to 3)
      * @see TextFacetDefinitionWriter#getFacetVertexCount()
      */

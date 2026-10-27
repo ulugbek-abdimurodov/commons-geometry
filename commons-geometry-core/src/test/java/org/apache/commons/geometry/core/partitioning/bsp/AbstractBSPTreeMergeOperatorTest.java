@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -530,7 +530,8 @@ class AbstractBSPTreeMergeOperatorTest {
         PartitionTestUtils.assertTreeStructure(b);
     }
 
-    private static class TestMergeOperator extends AbstractBSPTreeMergeOperator<TestPoint2D, AttributeNode<TestPoint2D, String>> {
+    private static final class TestMergeOperator extends
+        AbstractBSPTreeMergeOperator<TestPoint2D, AttributeNode<TestPoint2D, String>> {
 
         /** Perform the test merge operation with the given arguments.
          * @param input1

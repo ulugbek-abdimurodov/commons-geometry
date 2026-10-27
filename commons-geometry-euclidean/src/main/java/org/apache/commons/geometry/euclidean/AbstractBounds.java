@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -87,7 +87,7 @@ public abstract class AbstractBounds<
     public abstract boolean hasSize(Precision.DoubleEquivalence precision);
 
     /** Return true if the given point is strictly within or on the boundary of the bounding box.
-     * In other words, true if returned if <code>p<sub>t</sub> &gt;= min<sub>t</sub></code> and
+     * In other words, true is returned if <code>p<sub>t</sub> &gt;= min<sub>t</sub></code> and
      * <code>p<sub>t</sub> &lt;= max<sub>t</sub></code> for each coordinate value <code>t</code>.
      * Floating point comparisons are strict; values are considered equal only if they match exactly.
      * @param pt the point to check
@@ -118,11 +118,11 @@ public abstract class AbstractBounds<
      */
     public abstract boolean intersects(B other);
 
-    /** Return the intersection of this bounding box and the argument, or null if no intersection exists.
+    /** Return the intersection of this bounding box and the argument, or {@code null} if no intersection exists.
      * Floating point comparisons are strict; values are considered equal only if they match exactly. Note
-     * this this method may return bounding boxes with zero size in one or more coordinate axes.
+     * this method may return bounding boxes with zero size in one or more coordinate axes.
      * @param other bounding box to intersect with
-     * @return the intersection of this instance and the argument, or null if no such intersection
+     * @return the intersection of this instance and the argument, or {@code null} if no such intersection
      *      exists
      * @see #intersects(AbstractBounds)
      */
@@ -240,7 +240,7 @@ public abstract class AbstractBounds<
         }
 
         /** Get an object representing the <em>first</em> intersection of the line convex subset
-         * with the boundaries of the bounding box. Null is returned if no such intersection exists.
+         * with the boundaries of the bounding box. {@code null} is returned if no such intersection exists.
          * @return object representing the first intersection of the line convex subset with the
          *      boundaries of the bounding box, or {@code null} if no such intersection exists
          */

@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -39,7 +39,7 @@ final class PointMap2DImpl<V>
     /** X negative quadrant flag. */
     private static final int XNEG = 1 << 3;
 
-    /** X postive quadrant flag. */
+    /** X positive quadrant flag. */
     private static final int XPOS = 1 << 2;
 
     /** Y negative quadrant flag. */
@@ -90,7 +90,7 @@ final class PointMap2DImpl<V>
      */
     private static final class MapNode2D<V> extends BucketNode<Vector2D, V> {
 
-        /** Point to split child spaces; will be null for leaf nodes. */
+        /** Point to split child spaces; will be {@code null} for leaf nodes. */
         private Vector2D split;
 
         /** Construct a new instance.

@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -32,6 +32,7 @@ import org.apache.commons.numbers.core.Precision;
 
 /** Extension of the {@link BoundarySource} interface for Euclidean 3D space.
  */
+@FunctionalInterface
 public interface BoundarySource3D extends BoundarySource<PlaneConvexSubset>, Linecastable3D {
 
     /** Return a {@link BoundaryList3D} containing the boundaries in this instance.
@@ -92,9 +93,9 @@ public interface BoundarySource3D extends BoundarySource<PlaneConvexSubset>, Lin
     }
 
     /** Get a {@link Bounds3D} object defining the axis-aligned box containing all vertices
-     * in the boundaries for this instance. Null is returned if any boundary is infinite
+     * in the boundaries for this instance. {@code null} is returned if any boundary is infinite
      * or no vertices are found.
-     * @return the bounding box for this instance or null if no valid bounds could be determined
+     * @return the bounding box for this instance or {@code null} if no valid bounds could be determined
      */
     default Bounds3D getBounds() {
         return new BoundarySourceBoundsBuilder3D().getBounds(this);

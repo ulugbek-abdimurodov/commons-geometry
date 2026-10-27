@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -55,7 +55,7 @@ public class TestBucketPointMap1D<V> extends AbstractBucketPointMap<TestPoint1D,
         /** Negative half-space flag. */
         private static final int NEG = 1 << 1;
 
-        /** Positve half-space flag. */
+        /** Positive half-space flag. */
         private static final int POS = 1;
 
         /** Location flags for child nodes. */

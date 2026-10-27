@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,6 +23,11 @@ package org.apache.commons.geometry.euclidean;
  */
 public abstract class MultiDimensionalEuclideanVector<V extends MultiDimensionalEuclideanVector<V>>
         extends EuclideanVector<V> {
+    /** Create an instance. */
+    public MultiDimensionalEuclideanVector() {
+        // Do nothing
+    }
+
     /** Get the projection of the instance onto the given base vector. The returned
      * vector is parallel to {@code base}. Vector projection and rejection onto
      * a given base are related by the equation

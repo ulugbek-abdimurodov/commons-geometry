@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -21,7 +21,7 @@ import org.apache.commons.geometry.core.Transform;
 
 /** Interface representing a hyperplane, which in a space of dimension {@code n} is
  * a subspace of dimension {@code n - 1}. (A hyperplane in Euclidean 3D space,
- * for example, is a 2 dimensional plane.)
+ * for example, is a 2-dimensional plane.)
  *
  * <p>
  * Hyperplanes partition their surrounding space into 3 distinct sets: (1) points

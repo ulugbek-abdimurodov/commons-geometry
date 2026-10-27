@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -30,6 +30,11 @@ import org.apache.commons.numbers.core.Precision;
  */
 public abstract class EuclideanVector<V extends EuclideanVector<V>>
     implements Vector<V>, Point<V> {
+
+    /** Create an instance. */
+    public EuclideanVector() {
+        // Do nothing
+    }
 
     /** Return the vector representing the displacement from this vector
      * to the given vector. This is exactly equivalent to {@code v.subtract(thisVector)}

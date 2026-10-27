@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -39,7 +39,7 @@ public class SimpleFacetDefinition implements FacetDefinition {
      * @throws IllegalArgumentException if {@code vertices} contains fewer than 3 elements
      */
     public SimpleFacetDefinition(final List<Vector3D> vertices) {
-        this(vertices, null);
+        this(checkVertices(vertices), null, false);
     }
 
     /** Construct a new instance with the given vertices and normal.
@@ -48,14 +48,33 @@ public class SimpleFacetDefinition implements FacetDefinition {
      * @throws IllegalArgumentException if {@code vertices} contains fewer than 3 elements
      */
     public SimpleFacetDefinition(final List<Vector3D> vertices, final Vector3D normal) {
+        this(checkVertices(vertices), normal, false);
+    }
+
+    /** Private constructor.
+     * @param vertices facet vertices
+     * @param normal facet normal; may be null
+     * @param ignored Ignored parameter.
+     */
+    private SimpleFacetDefinition(final List<Vector3D> vertices, final Vector3D normal, boolean ignored) {
+        this.vertices = Collections.unmodifiableList(vertices);
+        this.normal = normal;
+    }
+
+    /**
+     * Check the vertices.
+     *
+     * @param vertices the vertices
+     * @return the vertices
+     * @throws IllegalArgumentException if {@code vertices} contains fewer than 3 elements
+     */
+    private static List<Vector3D> checkVertices(final List<Vector3D> vertices) {
         Objects.requireNonNull(vertices, "Facet vertex list cannot be null");
         if (vertices.size() < EuclideanUtils.TRIANGLE_VERTEX_COUNT) {
             throw new IllegalArgumentException("Facet vertex list must contain at least " +
                     EuclideanUtils.TRIANGLE_VERTEX_COUNT + " points; found " + vertices.size());
         }
-
-        this.vertices = Collections.unmodifiableList(vertices);
-        this.normal = normal;
+        return vertices;
     }
 
     /** {@inheritDoc} */
@@ -73,7 +92,7 @@ public class SimpleFacetDefinition implements FacetDefinition {
     /** {@inheritDoc} */
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder(256);
         sb.append(getClass().getSimpleName())
             .append("[vertices= ")
             .append(getVertices())
